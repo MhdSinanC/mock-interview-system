@@ -1,0 +1,24 @@
+{
+  "name": "mock-interview-system",
+  "version": "1.0.0",
+  "description": "Mock Interview System built with MERN Stack (Academic Project by Jezeem Muhammed)",
+  "scripts": {
+    "build": "npm --prefix client install && npm --prefix client run build && npm --prefix server install",
+    "start": "npm --prefix server start",
+    "server": "npm --prefix server start",
+    "client": "npm --prefix client dev",
+    "dev:server": "npm --prefix server run dev",
+    "dev:client": "npm --prefix client dev"
+  },
+  "keywords": [
+    "mock-interview",
+    "mern",
+    "mongodb",
+    "express",
+    "react",
+    "node",
+    "tailwind"
+  ],
+  "author": "Jezeem Muhammed",
+  "license": "ISC"
+}

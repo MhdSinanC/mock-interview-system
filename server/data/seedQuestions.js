@@ -1,0 +1,206 @@
+export const defaultQuestions = [
+  // SIMPLE / BEGINNER LEVEL
+  {
+    questionText: "What is the Virtual DOM in React and how does it improve performance?",
+    category: "Frontend",
+    difficulty: "Simple",
+    idealAnswer: "The Virtual DOM is an in-memory lightweight JavaScript representation of the actual DOM. When state changes, React creates a new Virtual DOM tree and diffs it with the previous one (reconciliation). It then calculates the minimal number of changes and batches updates to the real DOM, avoiding expensive layout reflows.",
+    keywords: ["virtual dom", "lightweight", "reconciliation", "diffing", "batch", "real dom", "state change", "performance"],
+    tips: "Mention reconciliation, diffing algorithm, and why direct real DOM manipulation is slow.",
+    timeLimitSeconds: 120,
+    maxScore: 10
+  },
+  {
+    questionText: "Explain the difference between 'var', 'let', and 'const' in JavaScript.",
+    category: "Frontend",
+    difficulty: "Simple",
+    idealAnswer: "var is function-scoped and hoisted with undefined initialization. let and const are block-scoped and hoisted into a temporal dead zone (TDZ). let allows reassignment, whereas const does not allow reassignment (though properties of objects/arrays can still be mutated).",
+    keywords: ["var", "let", "const", "scope", "function scope", "block scope", "hoisting", "temporal dead zone", "reassignment"],
+    tips: "Differentiate scope, hoisting behavior, and re-assignability.",
+    timeLimitSeconds: 120,
+    maxScore: 10
+  },
+  {
+    questionText: "What is Express.js middleware and how is it used in Node.js applications?",
+    category: "Backend",
+    difficulty: "Simple",
+    idealAnswer: "Middleware functions in Express have access to the request object (req), response object (res), and the next function in the request-response cycle. They can execute code, modify req/res, end the cycle, or call next() to pass control to the subsequent middleware. Examples include auth checks, body parsing, and logging.",
+    keywords: ["middleware", "req", "res", "next", "cycle", "request", "response", "authentication", "logging", "body parser"],
+    tips: "Explain req, res, next() parameters and give real use cases like JWT verification or error handling.",
+    timeLimitSeconds: 120,
+    maxScore: 10
+  },
+  {
+    questionText: "What is MongoDB and how does a document database differ from a relational database?",
+    category: "Database & SQL",
+    difficulty: "Simple",
+    idealAnswer: "MongoDB is a NoSQL document-oriented database that stores data in JSON-like BSON documents with dynamic schemas. Unlike relational databases which use tables, rows, columns, and rigid schemas with foreign keys, MongoDB groups documents into collections, allowing nested structures, horizontal scalability, and flexible schemas.",
+    keywords: ["nosql", "document", "bson", "json", "collection", "schema", "flexible", "relational", "tables", "scaling"],
+    tips: "Contrast collections vs tables, documents vs rows, and schema flexibility.",
+    timeLimitSeconds: 120,
+    maxScore: 10
+  },
+  {
+    questionText: "What are the core components of the MERN stack and how do they communicate?",
+    category: "Full Stack",
+    difficulty: "Simple",
+    idealAnswer: "MERN stands for MongoDB, Express.js, React.js, and Node.js. React renders the client-side single page UI. Express is a web server framework running on Node.js that serves RESTful or GraphQL APIs. The client communicates with the server via HTTP/JSON requests (using Axios or Fetch). Node/Express connects to MongoDB using Mongoose to persist and retrieve data.",
+    keywords: ["mongodb", "express", "react", "node", "mern", "rest", "api", "http", "json", "mongoose", "single page"],
+    tips: "Trace a request from browser click to React, Express API, Mongo query, and back to UI.",
+    timeLimitSeconds: 120,
+    maxScore: 10
+  },
+  {
+    questionText: "Tell me about yourself, your technical background, and what drives your passion for software development.",
+    category: "HR & Behavioral",
+    difficulty: "Simple",
+    idealAnswer: "A strong response follows the Present-Past-Future structure: Present: current education, tech stack (e.g. MERN stack, JavaScript), and recent projects built. Past: how interest in programming started, problem-solving passion. Future: why this interview role is the exciting next step to contribute and grow technically.",
+    keywords: ["background", "education", "mern", "projects", "problem solving", "passion", "career", "skills", "growth"],
+    tips: "Keep answer between 60-90 seconds, highlight concrete projects, and connect directly to engineering goals.",
+    timeLimitSeconds: 150,
+    maxScore: 10
+  },
+  {
+    questionText: "What is an Array and how does its memory allocation differ from a Linked List?",
+    category: "Data Structures",
+    difficulty: "Simple",
+    idealAnswer: "An Array stores elements in contiguous memory locations, allowing O(1) random access by index, but resizing and insertions/deletions take O(N). A Linked List consists of nodes where each node holds data and a pointer to the next node; nodes are stored non-contiguously, so indexing takes O(N), but insertion/deletion at a known pointer is O(1).",
+    keywords: ["array", "linked list", "contiguous", "memory", "o(1)", "o(n)", "pointer", "node", "random access", "insertion"],
+    tips: "Highlight random access index lookup O(1) vs traversal O(N) and memory locality.",
+    timeLimitSeconds: 120,
+    maxScore: 10
+  },
+
+  // INTERMEDIATE LEVEL
+  {
+    questionText: "Explain React Hooks, specifically useEffect and its dependency array. How do cleanup functions work?",
+    category: "Frontend",
+    difficulty: "Intermediate",
+    idealAnswer: "useEffect lets functional components run side-effects like fetching data or setting subscriptions. If no dependency array is passed, it runs on every render. If an empty array [] is passed, it runs once on mount. If variables are provided, it re-runs when those dependencies change. Returning a function from useEffect acts as a cleanup, running before the effect re-executes or on component unmount (useful for clearing timers or event listeners).",
+    keywords: ["useeffect", "hooks", "dependency array", "side effects", "mount", "unmount", "cleanup", "subscription", "timer"],
+    tips: "Explain memory leaks, empty array vs no array, and unmount cleanup logic.",
+    timeLimitSeconds: 150,
+    maxScore: 10
+  },
+  {
+    questionText: "What is the Node.js Event Loop, and how does it handle non-blocking asynchronous I/O with single-threaded execution?",
+    category: "Backend",
+    difficulty: "Intermediate",
+    idealAnswer: "Node.js runs on a single main JavaScript thread powered by V8 and libuv. The Event Loop coordinates asynchronous operations across different phases: timers (setTimeout), pending callbacks, idle/prepare, poll (incoming I/O), check (setImmediate), and close callbacks. Heavy I/O or crypto operations are offloaded to libuv's thread pool, allowing the main thread to remain unblocked and process callback queues.",
+    keywords: ["event loop", "single thread", "libuv", "v8", "non-blocking", "asynchronous", "thread pool", "microtasks", "timers", "poll phase"],
+    tips: "Discuss phases of the event loop, microtask queue (process.nextTick, Promise), and libuv.",
+    timeLimitSeconds: 150,
+    maxScore: 10
+  },
+  {
+    questionText: "How does JWT (JSON Web Token) authentication work, and how should tokens be secured between client and server?",
+    category: "Full Stack",
+    difficulty: "Intermediate",
+    idealAnswer: "A JWT consists of three parts: Header (algorithm), Payload (claims/user info), and Signature (signed with a secret key). When a user logs in, the server verifies credentials and signs a token. The client stores it (preferably in an httpOnly secure cookie to mitigate XSS attacks) and sends it in the Authorization Bearer header or cookie on subsequent requests. The server validates the signature without querying the database for session state.",
+    keywords: ["jwt", "header", "payload", "signature", "httponly", "cookie", "bearer", "xss", "csrf", "stateless", "token"],
+    tips: "Break down the 3 components of JWT and contrast localStorage vs httpOnly cookie security.",
+    timeLimitSeconds: 150,
+    maxScore: 10
+  },
+  {
+    questionText: "Explain indexing in MongoDB. How do compound indexes and execution plans (explain()) optimize query performance?",
+    category: "Database & SQL",
+    difficulty: "Intermediate",
+    idealAnswer: "Indexes in MongoDB use B-trees to locate documents quickly without scanning every document in a collection (COLLSCAN vs IXSCAN). A compound index indexes multiple fields, following the Equality-Sort-Range (ESR) rule. The explain('executionStats') method allows analyzing queries to inspect execution time, totalDocsExamined, and index usage to ensure queries avoid full table scans.",
+    keywords: ["index", "b-tree", "collscan", "ixscan", "compound index", "explain", "executionstats", "performance", "esr rule"],
+    tips: "Mention COLLSCAN vs IXSCAN and the ESR (Equality, Sort, Range) rule.",
+    timeLimitSeconds: 150,
+    maxScore: 10
+  },
+  {
+    questionText: "How does a Hash Table achieve O(1) average time complexity? How are collisions handled?",
+    category: "Data Structures",
+    difficulty: "Intermediate",
+    idealAnswer: "A Hash Table uses a hash function to map keys to bucket indices in an array, enabling average O(1) lookups, insertions, and deletions. When different keys generate the same hash (collision), it can be resolved using Separate Chaining (linked lists or balanced trees at each bucket) or Open Addressing (Linear Probing, Quadratic Probing, Double Hashing). If the load factor becomes too high, rehashing is triggered.",
+    keywords: ["hash table", "hash function", "collision", "o(1)", "separate chaining", "open addressing", "linear probing", "load factor", "rehashing"],
+    tips: "Explain how load factor affects degradation to O(N) and compare Chaining vs Open Addressing.",
+    timeLimitSeconds: 150,
+    maxScore: 10
+  },
+  {
+    questionText: "Describe a challenging bug or technical obstacle you encountered in a recent project. How did you diagnose and resolve it?",
+    category: "HR & Behavioral",
+    difficulty: "Intermediate",
+    idealAnswer: "A great answer uses the STAR technique: Situation: what project and environment. Task: what was failing or breaking. Action: methodical debugging steps (checking network logs, adding tests, inspecting call stacks, isolating state). Result: what was the fix, measurable outcome, and key technical lesson learned to prevent future occurrences.",
+    keywords: ["star method", "situation", "task", "action", "result", "debugging", "root cause", "resolution", "logs", "testing"],
+    tips: "Focus 70% of time on your specific Action and measurable Result rather than just describing the problem.",
+    timeLimitSeconds: 150,
+    maxScore: 10
+  },
+
+  // HARD / ADVANCED LEVEL
+  {
+    questionText: "How would you architect a high-concurrency real-time notification system in Node.js and MongoDB? Address bottlenecks and scalability.",
+    category: "Backend",
+    difficulty: "Hard",
+    idealAnswer: "To handle high concurrency: 1) Decouple notification publishing using a message queue like Redis Pub/Sub, RabbitMQ, or Apache Kafka. 2) Use WebSockets (Socket.io) with Redis adapter for horizontal scaling across multiple Node.js instances behind an Nginx load balancer. 3) Cache frequent user reads in Redis. 4) Use MongoDB change streams or write batches, indexing user_id and timestamp. 5) Implement rate limiting, connection heartbeat, and backpressure handling.",
+    keywords: ["real-time", "websockets", "redis", "pub sub", "message queue", "kafka", "load balancer", "horizontal scaling", "rate limit", "mongodb change streams"],
+    tips: "Cover decoupling with message broker, multi-node websocket scaling with Redis adapter, and caching.",
+    timeLimitSeconds: 180,
+    maxScore: 10
+  },
+  {
+    questionText: "Explain React Server Components (RSC) vs Client Components and Server-Side Rendering (SSR). How does hydration work?",
+    category: "Frontend",
+    difficulty: "Hard",
+    idealAnswer: "SSR renders the initial HTML on the server and sends it to the browser, followed by downloading the full JavaScript bundle to attach event listeners (hydration). React Server Components execute exclusively on the server and never ship client JavaScript to the browser, eliminating bundle overhead and allowing direct backend/db access. Client components are used for interactive UI (useState, event handlers) and are hydrated into the RSC stream without rebuilding the entire tree.",
+    keywords: ["react server components", "rsc", "ssr", "hydration", "bundle size", "client components", "streaming", "interactivity", "server side rendering"],
+    tips: "Clarify that RSC does not replace SSR, but works alongside it to stream UI without shipping code to client.",
+    timeLimitSeconds: 180,
+    maxScore: 10
+  },
+  {
+    questionText: "Design a URL shortening service (like Bitly) handling 100M new URLs per month. Outline schema, hash generation, and caching strategy.",
+    category: "Full Stack",
+    difficulty: "Hard",
+    idealAnswer: "1) Capacity estimation: ~40 writes/sec, 10x reads. 2) Hash generation: Use Base62 encoding (a-z, A-Z, 0-9) over a distributed unique ID generator (e.g. Snowflake or auto-incrementing range coordinator) to produce a 7-character string (62^7 = 3.5 trillion URLs). Avoid MD5/SHA256 truncation to prevent collisions. 3) Schema: Mongo/NoSQL document { shortCode, longUrl, userId, createdAt, clicks }. 4) Read caching: Cache hot 20% URLs in Redis with LRU eviction. 5) Return HTTP 302 or 301 redirect.",
+    keywords: ["system design", "base62", "url shortener", "redis cache", "lru", "snowflake", "301 redirect", "302 redirect", "collision", "scalability"],
+    tips: "Explain Base62 encoding, unique ID generation without collision, and 301 vs 302 redirect trade-offs.",
+    timeLimitSeconds: 180,
+    maxScore: 10
+  },
+  {
+    questionText: "Explain how MongoDB handles ACID transactions across multiple documents and replica sets, and what consensus protocol is used.",
+    category: "Database & SQL",
+    difficulty: "Hard",
+    idealAnswer: "MongoDB supports multi-document distributed ACID transactions using sessions (`client.startSession()`). It leverages WiredTiger storage engine's snapshot isolation and multi-version concurrency control (MVCC). Replica sets elect primaries using the Raft-based election protocol. Transactions require a majority write concern (`w: 'majority'`) and read concern (`readConcern: 'snapshot'`) to guarantee consistency and durability across failovers without dirty reads.",
+    keywords: ["acid", "transactions", "replica set", "raft", "snapshot isolation", "wiredtiger", "mvcc", "write concern", "read concern", "sessions"],
+    tips: "Mention startSession(), WiredTiger snapshot isolation, and readConcern snapshot.",
+    timeLimitSeconds: 180,
+    maxScore: 10
+  },
+  {
+    questionText: "How would you detect and find the start node of a cycle in a singly linked list? Prove the time and space complexity.",
+    category: "Data Structures",
+    difficulty: "Hard",
+    idealAnswer: "Use Floyd's Cycle Detection Algorithm (Slow and Fast pointers). 1) Initialize slow and fast at head. Move slow 1 step and fast 2 steps. If fast meets NULL, there is no cycle. If slow == fast, a cycle exists. 2) To find the start node: reset slow to head while keeping fast at meeting point. Advance both pointers 1 step at a time. The node where they meet is the start of the cycle. Time complexity is O(N) and space complexity is O(1).",
+    keywords: ["floyd's cycle detection", "tortoise and hare", "slow pointer", "fast pointer", "cycle", "linked list", "o(1) space", "o(n) time", "meeting point"],
+    tips: "State mathematical proof: distance to loop start equals distance from meeting point to loop start.",
+    timeLimitSeconds: 180,
+    maxScore: 10
+  },
+  {
+    questionText: "Tell me about a time you strongly disagreed with a senior engineer or team decision regarding technical architecture. How did you handle it?",
+    category: "HR & Behavioral",
+    difficulty: "Hard",
+    idealAnswer: "Structure with professional maturity: 1) Context: explain the architectural difference (e.g., choice of framework, microservice vs monolith, database indexing). 2) Constructive Approach: gathered objective metrics, benchmarks, and prototype proof-of-concept rather than emotional argumentation. 3) Collaboration: scheduled a constructive design review to present trade-offs transparently. 4) Alignment: whether team adopted the proposal or alternative, committed 100% to team delivery (disagree and commit).",
+    keywords: ["disagreement", "professionalism", "benchmarks", "prototype", "metrics", "trade-offs", "communication", "disagree and commit", "teamwork"],
+    tips: "Show psychological safety, objective benchmark-driven decision making, and 'disagree and commit' mindset.",
+    timeLimitSeconds: 180,
+    maxScore: 10
+  }
+];
+
+export const defaultCategories = [
+  { name: "Frontend", description: "React, JavaScript, Web Performance, UI/UX Architecture" },
+  { name: "Backend", description: "Node.js, Express, REST APIs, Microservices & Architecture" },
+  { name: "Full Stack", description: "MERN Stack integration, Authentication, Security, End-to-end design" },
+  { name: "Data Structures", description: "Arrays, Linked Lists, Trees, Graphs, Sorting & Complexity" },
+  { name: "Database & SQL", description: "MongoDB, NoSQL vs Relational, Indexing, Transactions & Aggregation" },
+  { name: "HR & Behavioral", description: "STAR method, Situational responses, Leadership, Conflict management" }
+];
