@@ -28,7 +28,7 @@ app.use(cors({
 app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ extended: true, limit: '10mb' }));
 
-// Health and System Info
+// Health and System Info (Used for Keep-Alive pings)
 app.get('/api/health', (req, res) => {
   res.json({
     status: 'online',
@@ -64,6 +64,25 @@ app.use((err, req, res, next) => {
   });
 });
 
+// Automated self-ping to prevent Render sleep (runs every 14 minutes)
+const setupKeepAlive = () => {
+  const targetUrl = process.env.RENDER_EXTERNAL_URL || process.env.APP_URL;
+  if (!targetUrl) return;
+
+  const PING_INTERVAL = 14 * 60 * 1000; // 14 mins (Render spins down after 15 mins)
+  console.log(`[Keep-Alive] Initialized anti-sleep service for: ${targetUrl}`);
+
+  setInterval(async () => {
+    try {
+      const pingUrl = `${targetUrl.replace(/\/$/, '')}/api/health`;
+      const res = await fetch(pingUrl);
+      console.log(`[Keep-Alive] Self-ping status: ${res.status} at ${new Date().toLocaleTimeString()}`);
+    } catch (err) {
+      console.warn(`[Keep-Alive] Self-ping note: ${err.message}`);
+    }
+  }, PING_INTERVAL);
+};
+
 // Start Server & Connect Database
 const startServer = async () => {
   await connectDB();
@@ -74,6 +93,7 @@ const startServer = async () => {
     console.log(`  📄 Author: Jezeem Muhammed                          `);
     console.log(`  ⚡ Health: http://localhost:${PORT}/api/health        `);
     console.log(`=======================================================`);
+    setupKeepAlive();
   });
 };
 
