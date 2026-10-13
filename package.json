@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Mock Interview System built with MERN Stack (Academic Project by Jezeem Muhammed)",
   "scripts": {
-    "build": "npm --prefix client install && npm --prefix client run build && npm --prefix server install",
+    "build": "npm --prefix client install --include=dev && npm --prefix client run build && npm --prefix server install",
     "start": "npm --prefix server start",
     "server": "npm --prefix server start",
     "client": "npm --prefix client dev",
