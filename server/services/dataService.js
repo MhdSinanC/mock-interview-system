@@ -67,6 +67,21 @@ export async function getAllUsers() {
   return localDb.users.map(({ password, ...u }) => u);
 }
 
+export async function deleteUser(id) {
+  if (isMongoLive()) {
+    // Delete candidate results to avoid orphaned records
+    await Result.deleteMany({ user: id });
+    return await User.findByIdAndDelete(id);
+  }
+  const index = localDb.users.findIndex(u => u._id.toString() === id.toString());
+  if (index === -1) return null;
+  const removed = localDb.users.splice(index, 1);
+  localDb.results = localDb.results.filter(r => !(r.user && r.user.toString() === id.toString()));
+  persistLocalStore();
+  return removed[0];
+}
+
+
 // ---------------- QUESTION OPERATIONS ----------------
 export async function getQuestions(filter = {}) {
   if (isMongoLive()) {

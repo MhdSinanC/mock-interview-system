@@ -88,6 +88,9 @@ export const api = {
   // Admin
   getAdminStats: () => request('/admin/stats'),
   getAllUsers: () => request('/admin/users'),
+  deleteCandidate: (id) => request(`/admin/users/${id}`, {
+    method: 'DELETE'
+  }),
   getAllResults: () => request('/admin/results'),
 
   // Health

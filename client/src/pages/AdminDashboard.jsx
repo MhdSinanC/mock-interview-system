@@ -29,6 +29,7 @@ export default function AdminDashboard() {
   const [diffFilter, setDiffFilter] = useState('All');
   const [catFilter, setCatFilter] = useState('All');
   const [searchQ, setSearchQ] = useState('');
+  const [searchUser, setSearchUser] = useState('');
 
   // Modal State for Add / Edit
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -124,11 +125,34 @@ export default function AdminDashboard() {
     }
   };
 
+  const handleDeleteCandidate = async (id, name) => {
+    if (!window.confirm(`Are you sure you want to delete candidate "${name}"? This action permanently removes their account and all associated mock interview submissions.`)) {
+      return;
+    }
+    try {
+      await api.deleteCandidate(id);
+      await loadAllData();
+    } catch (err) {
+      alert(err.message || 'Error deleting candidate.');
+    }
+  };
+
   const filteredQuestions = questions.filter(q => {
     if (diffFilter !== 'All' && q.difficulty !== diffFilter) return false;
     if (catFilter !== 'All' && q.category !== catFilter) return false;
     if (searchQ && !q.questionText.toLowerCase().includes(searchQ.toLowerCase())) return false;
     return true;
+  });
+
+  const filteredUsers = users.filter(u => {
+    if (!searchUser) return true;
+    const term = searchUser.toLowerCase();
+    return (
+      u.name?.toLowerCase().includes(term) ||
+      u.email?.toLowerCase().includes(term) ||
+      u.username?.toLowerCase().includes(term) ||
+      u.targetRole?.toLowerCase().includes(term)
+    );
   });
 
   return (
@@ -319,41 +343,83 @@ export default function AdminDashboard() {
 
       {/* TAB 2: CANDIDATES */}
       {activeTab === 'users' && (
-        <div className="overflow-x-auto rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/50 shadow-sm">
-          <table className="w-full text-left text-xs">
-            <thead className="bg-slate-50 dark:bg-slate-900/90 border-b border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400 uppercase font-semibold">
-              <tr>
-                <th className="py-3 px-4">Name</th>
-                <th className="py-3 px-4">Email</th>
-                <th className="py-3 px-4">Username</th>
-                <th className="py-3 px-4">Role</th>
-                <th className="py-3 px-4">Target Track</th>
-                <th className="py-3 px-4">Experience</th>
-                <th className="py-3 px-4">Registered</th>
-              </tr>
-            </thead>
-            <tbody className="divide-y divide-slate-200 dark:divide-slate-800/80 text-slate-700 dark:text-slate-300">
-              {users.map((u) => (
-                <tr key={u._id} className="hover:bg-slate-50 dark:hover:bg-slate-800/40 transition-colors">
-                  <td className="py-3 px-4 font-bold text-slate-900 dark:text-white">{u.name}</td>
-                  <td className="py-3 px-4 text-slate-800 dark:text-slate-300">{u.email}</td>
-                  <td className="py-3 px-4 font-mono text-slate-500 dark:text-slate-400">@{u.username}</td>
-                  <td className="py-3 px-4">
-                    <span className={`px-2 py-0.5 rounded-full text-[10px] font-bold uppercase ${
-                      u.role === 'admin' ? 'bg-amber-100 dark:bg-amber-500/20 text-amber-800 dark:text-amber-300' : 'bg-indigo-100 dark:bg-indigo-500/20 text-indigo-800 dark:text-indigo-300'
-                    }`}>
-                      {u.role}
-                    </span>
-                  </td>
-                  <td className="py-3 px-4 text-slate-800 dark:text-slate-300">{u.targetRole}</td>
-                  <td className="py-3 px-4 text-slate-500 dark:text-slate-400">{u.experienceLevel}</td>
-                  <td className="py-3 px-4 text-slate-500">
-                    {new Date(u.createdAt).toLocaleDateString()}
-                  </td>
+        <div className="space-y-4">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-4 rounded-xl bg-white dark:bg-slate-900/50 border border-slate-200 dark:border-slate-800 shadow-sm">
+            <div className="relative flex-1 max-w-md">
+              <Search className="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" />
+              <input
+                type="text"
+                value={searchUser}
+                onChange={(e) => setSearchUser(e.target.value)}
+                placeholder="Search candidates by name, email, or track..."
+                className="w-full pl-9 pr-4 py-2 bg-slate-50 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 rounded-xl text-xs text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+              />
+            </div>
+            <div className="text-xs text-slate-500 dark:text-slate-400">
+              Showing <span className="font-bold text-slate-900 dark:text-white">{filteredUsers.length}</span> registered accounts
+            </div>
+          </div>
+
+          <div className="overflow-x-auto rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/50 shadow-sm">
+            <table className="w-full text-left text-xs">
+              <thead className="bg-slate-50 dark:bg-slate-900/90 border-b border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400 uppercase font-semibold">
+                <tr>
+                  <th className="py-3 px-4">Name</th>
+                  <th className="py-3 px-4">Email</th>
+                  <th className="py-3 px-4">Username</th>
+                  <th className="py-3 px-4">Role</th>
+                  <th className="py-3 px-4">Target Track</th>
+                  <th className="py-3 px-4">Experience</th>
+                  <th className="py-3 px-4">Registered</th>
+                  <th className="py-3 px-4 text-right">Actions</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+              <tbody className="divide-y divide-slate-200 dark:divide-slate-800/80 text-slate-700 dark:text-slate-300">
+                {filteredUsers.map((u) => (
+                  <tr key={u._id} className="hover:bg-slate-50 dark:hover:bg-slate-800/40 transition-colors">
+                    <td className="py-3 px-4 font-bold text-slate-900 dark:text-white">{u.name}</td>
+                    <td className="py-3 px-4 text-slate-800 dark:text-slate-300">{u.email}</td>
+                    <td className="py-3 px-4 font-mono text-slate-500 dark:text-slate-400">@{u.username}</td>
+                    <td className="py-3 px-4">
+                      <span className={`px-2 py-0.5 rounded-full text-[10px] font-bold uppercase ${
+                        u.role === 'admin' ? 'bg-amber-100 dark:bg-amber-500/20 text-amber-800 dark:text-amber-300' : 'bg-indigo-100 dark:bg-indigo-500/20 text-indigo-800 dark:text-indigo-300'
+                      }`}>
+                        {u.role}
+                      </span>
+                    </td>
+                    <td className="py-3 px-4 text-slate-800 dark:text-slate-300">{u.targetRole}</td>
+                    <td className="py-3 px-4 text-slate-500 dark:text-slate-400">{u.experienceLevel}</td>
+                    <td className="py-3 px-4 text-slate-500">
+                      {new Date(u.createdAt).toLocaleDateString()}
+                    </td>
+                    <td className="py-3 px-4 text-right">
+                      {u.role !== 'admin' ? (
+                        <button
+                          onClick={() => handleDeleteCandidate(u._id, u.name)}
+                          className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-rose-50 dark:bg-rose-500/10 hover:bg-rose-100 dark:hover:bg-rose-500/20 text-rose-600 dark:text-rose-400 border border-rose-200 dark:border-rose-500/30 transition-colors text-xs font-semibold"
+                          title={`Delete candidate ${u.name}`}
+                        >
+                          <Trash2 className="w-3.5 h-3.5" />
+                          <span>Delete</span>
+                        </button>
+                      ) : (
+                        <span className="text-[10px] font-semibold px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-slate-400 dark:text-slate-500">
+                          Protected
+                        </span>
+                      )}
+                    </td>
+                  </tr>
+                ))}
+                {filteredUsers.length === 0 && (
+                  <tr>
+                    <td colSpan={8} className="py-8 text-center text-slate-500 dark:text-slate-400">
+                      No candidate accounts found.
+                    </td>
+                  </tr>
+                )}
+              </tbody>
+            </table>
+          </div>
         </div>
       )}
 
