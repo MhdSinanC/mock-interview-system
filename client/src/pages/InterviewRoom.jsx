@@ -179,22 +179,22 @@ export default function InterviewRoom() {
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 space-y-6">
       
       {/* Top Session Bar */}
-      <div className="flex flex-wrap items-center justify-between gap-4 p-4 rounded-2xl bg-slate-900/90 border border-slate-800 backdrop-blur-md">
+      <div className="flex flex-wrap items-center justify-between gap-4 p-4 rounded-2xl bg-white dark:bg-slate-900/90 border border-slate-200 dark:border-slate-800 shadow-sm backdrop-blur-md transition-colors duration-200">
         
         {/* Left: Progress info */}
         <div className="flex items-center gap-3">
           <div className="flex items-center gap-2">
-            <span className="text-xs font-bold text-white px-3 py-1 rounded-lg bg-indigo-600/30 border border-indigo-500/40 text-indigo-300">
+            <span className="text-xs font-bold px-3 py-1 rounded-lg bg-indigo-50 dark:bg-indigo-600/30 border border-indigo-200 dark:border-indigo-500/40 text-indigo-700 dark:text-indigo-300">
               Q{currentIndex + 1} of {questions.length}
             </span>
             <span className={`text-xs font-semibold px-2.5 py-1 rounded-lg uppercase ${
-              difficulty === 'Simple' ? 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/20' :
-              difficulty === 'Intermediate' ? 'bg-amber-500/10 text-amber-400 border border-amber-500/20' :
-              'bg-rose-500/10 text-rose-400 border border-rose-500/20'
+              difficulty === 'Simple' ? 'bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20' :
+              difficulty === 'Intermediate' ? 'bg-amber-500/10 text-amber-600 dark:text-amber-400 border border-amber-500/20' :
+              'bg-rose-500/10 text-rose-600 dark:text-rose-400 border border-rose-500/20'
             }`}>
               {difficulty}
             </span>
-            <span className="text-xs text-slate-400 hidden sm:inline">
+            <span className="text-xs text-slate-500 dark:text-slate-400 hidden sm:inline">
               {currentQuestion.category}
             </span>
           </div>
@@ -213,8 +213,8 @@ export default function InterviewRoom() {
                   isCurrent
                     ? 'bg-indigo-600 text-white shadow-md shadow-indigo-600/40 scale-105'
                     : hasAnswer
-                    ? 'bg-emerald-500/20 text-emerald-400 border border-emerald-500/30'
-                    : 'bg-slate-800 text-slate-400 hover:text-white'
+                    ? 'bg-emerald-500/20 text-emerald-600 dark:text-emerald-400 border border-emerald-500/30'
+                    : 'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
                 }`}
               >
                 {idx + 1}
@@ -227,8 +227,8 @@ export default function InterviewRoom() {
         <div className="flex items-center gap-3">
           <div className={`flex items-center gap-1.5 px-3 py-1.5 rounded-xl border text-xs font-mono font-bold ${
             timeLeft < 30
-              ? 'bg-rose-500/10 text-rose-400 border-rose-500/30 animate-pulse'
-              : 'bg-slate-950 text-slate-300 border-slate-800'
+              ? 'bg-rose-500/10 text-rose-600 dark:text-rose-400 border-rose-500/30 animate-pulse'
+              : 'bg-slate-100 dark:bg-slate-950 text-slate-800 dark:text-slate-300 border-slate-200 dark:border-slate-800'
           }`}>
             <Timer className="w-3.5 h-3.5" />
             <span>{formatTimer(timeLeft)}</span>
@@ -252,15 +252,15 @@ export default function InterviewRoom() {
         <div className="lg:col-span-5 space-y-4">
           
           {/* Interviewer Persona Card */}
-          <div className="p-6 rounded-2xl bg-slate-900/90 border border-slate-800 space-y-4 shadow-xl">
-            <div className="flex items-center justify-between pb-3 border-b border-slate-800">
+          <div className="p-6 rounded-2xl bg-white dark:bg-slate-900/90 border border-slate-200 dark:border-slate-800 space-y-4 shadow-sm dark:shadow-xl transition-colors duration-200">
+            <div className="flex items-center justify-between pb-3 border-b border-slate-200 dark:border-slate-800">
               <div className="flex items-center gap-3">
                 <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-indigo-500 to-purple-600 flex items-center justify-center text-white shadow-md">
                   <Bot className="w-6 h-6" />
                 </div>
                 <div>
-                  <h3 className="text-sm font-bold text-white">AI Technical Interviewer</h3>
-                  <p className="text-[11px] text-slate-400">Mock Interview Assessment Engine</p>
+                  <h3 className="text-sm font-bold text-slate-900 dark:text-white">AI Technical Interviewer</h3>
+                  <p className="text-[11px] text-slate-500 dark:text-slate-400">Mock Interview Assessment Engine</p>
                 </div>
               </div>
 
@@ -270,42 +270,42 @@ export default function InterviewRoom() {
                 className={`p-2 rounded-xl transition-colors border ${
                   isSpeakingQuestion
                     ? 'bg-indigo-600 text-white border-indigo-500 animate-pulse'
-                    : 'bg-slate-800 text-slate-300 hover:text-white border-slate-700'
+                    : 'bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white border-slate-200 dark:border-slate-700'
                 }`}
                 title={isSpeakingQuestion ? "Mute audio" : "Listen to question voice"}
               >
-                {isSpeakingQuestion ? <Volume2 className="w-4 h-4" /> : <Volume2 className="w-4 h-4 text-indigo-400" />}
+                {isSpeakingQuestion ? <Volume2 className="w-4 h-4" /> : <Volume2 className="w-4 h-4 text-indigo-600 dark:text-indigo-400" />}
               </button>
             </div>
 
             {/* Question Text */}
             <div className="space-y-3">
               <div className="flex items-center justify-between">
-                <span className="text-[11px] font-semibold uppercase tracking-wider text-indigo-400">
+                <span className="text-[11px] font-semibold uppercase tracking-wider text-indigo-600 dark:text-indigo-400">
                   Question #{currentIndex + 1}
                 </span>
-                <span className="text-[11px] text-slate-500">Max Score: {currentQuestion.maxScore} pts</span>
+                <span className="text-[11px] text-slate-400 dark:text-slate-500">Max Score: {currentQuestion.maxScore} pts</span>
               </div>
 
-              <h2 className="text-base sm:text-lg font-bold text-white leading-relaxed">
+              <h2 className="text-base sm:text-lg font-bold text-slate-900 dark:text-white leading-relaxed">
                 {currentQuestion.questionText}
               </h2>
             </div>
 
             {/* Tips / Hint Drawer */}
             {currentQuestion.tips && (
-              <div className="pt-2 border-t border-slate-800/80">
+              <div className="pt-2 border-t border-slate-200 dark:border-slate-800/80">
                 <button
                   type="button"
                   onClick={() => setShowTips(!showTips)}
-                  className="flex items-center gap-1.5 text-xs font-medium text-amber-400 hover:text-amber-300 transition-colors"
+                  className="flex items-center gap-1.5 text-xs font-medium text-amber-600 dark:text-amber-400 hover:text-amber-700 dark:hover:text-amber-300 transition-colors"
                 >
                   <HelpCircle className="w-3.5 h-3.5" />
                   <span>{showTips ? 'Hide Interviewer Tip' : 'Show Interviewer Tip / Guideline'}</span>
                 </button>
 
                 {showTips && (
-                  <div className="mt-2.5 p-3 rounded-xl bg-amber-500/10 border border-amber-500/20 text-xs text-amber-200 leading-relaxed">
+                  <div className="mt-2.5 p-3 rounded-xl bg-amber-50 dark:bg-amber-500/10 border border-amber-200 dark:border-amber-500/20 text-xs text-amber-800 dark:text-amber-200 leading-relaxed">
                     💡 <strong>Tip:</strong> {currentQuestion.tips}
                   </div>
                 )}
@@ -325,14 +325,14 @@ export default function InterviewRoom() {
 
         {/* Right Column (7 cols): Candidate Answer Workspace */}
         <div className="lg:col-span-7 space-y-4">
-          <div className="p-6 rounded-2xl bg-slate-900/90 border border-slate-800 space-y-4 shadow-xl flex flex-col h-full justify-between">
+          <div className="p-6 rounded-2xl bg-white dark:bg-slate-900/90 border border-slate-200 dark:border-slate-800 space-y-4 shadow-sm dark:shadow-xl flex flex-col h-full justify-between transition-colors duration-200">
             
             <div className="space-y-3">
               {/* Toolbar */}
-              <div className="flex flex-wrap items-center justify-between gap-3 pb-3 border-b border-slate-800">
+              <div className="flex flex-wrap items-center justify-between gap-3 pb-3 border-b border-slate-200 dark:border-slate-800">
                 <div className="flex items-center gap-2">
-                  <Code2 className="w-4 h-4 text-indigo-400" />
-                  <span className="text-xs font-bold text-white">Your Technical Response</span>
+                  <Code2 className="w-4 h-4 text-indigo-600 dark:text-indigo-400" />
+                  <span className="text-xs font-bold text-slate-900 dark:text-white">Your Technical Response</span>
                 </div>
 
                 <div className="flex items-center gap-2">
@@ -352,10 +352,10 @@ export default function InterviewRoom() {
                   value={currentText}
                   onChange={(e) => handleAnswerChange(e.target.value)}
                   placeholder="Type or speak your answer here... Be clear, mention technical terminology, architecture trade-offs, and edge cases to maximize evaluation points."
-                  className="w-full p-4 bg-slate-950 border border-slate-800 rounded-xl text-sm font-mono text-slate-100 placeholder-slate-500 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 leading-relaxed resize-y"
+                  className="w-full p-4 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl text-sm font-mono text-slate-900 dark:text-slate-100 placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 leading-relaxed resize-y"
                 />
 
-                <div className="flex items-center justify-between text-[11px] text-slate-500 px-1 pt-1">
+                <div className="flex items-center justify-between text-[11px] text-slate-500 dark:text-slate-400 px-1 pt-1">
                   <span>{wordCount} words • {currentText.length} characters</span>
                   <span>Auto-saved locally</span>
                 </div>
@@ -363,12 +363,12 @@ export default function InterviewRoom() {
             </div>
 
             {/* Bottom Nav Controls */}
-            <div className="pt-4 border-t border-slate-800 flex items-center justify-between gap-3">
+            <div className="pt-4 border-t border-slate-200 dark:border-slate-800 flex items-center justify-between gap-3">
               <button
                 type="button"
                 onClick={() => setCurrentIndex(prev => Math.max(0, prev - 1))}
                 disabled={currentIndex === 0}
-                className="flex items-center gap-1.5 px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-750 text-slate-300 hover:text-white text-xs font-medium border border-slate-700 disabled:opacity-30 disabled:pointer-events-none transition-colors"
+                className="flex items-center gap-1.5 px-4 py-2 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-750 text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white text-xs font-medium border border-slate-200 dark:border-slate-700 disabled:opacity-30 disabled:pointer-events-none transition-colors"
               >
                 <ChevronLeft className="w-4 h-4" />
                 <span>Previous Question</span>
@@ -402,19 +402,19 @@ export default function InterviewRoom() {
 
       {/* Confirmation Modal */}
       {confirmSubmitModal && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-sm">
-          <div className="w-full max-w-md p-6 rounded-2xl bg-slate-900 border border-slate-800 shadow-2xl space-y-4">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/70 backdrop-blur-sm">
+          <div className="w-full max-w-md p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-2xl space-y-4">
             <div className="flex items-center gap-3">
-              <div className="p-2.5 rounded-xl bg-indigo-500/10 text-indigo-400 border border-indigo-500/20">
+              <div className="p-2.5 rounded-xl bg-indigo-50 dark:bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 border border-indigo-200 dark:border-indigo-500/20">
                 <Sparkles className="w-5 h-5" />
               </div>
-              <h3 className="text-base font-bold text-white">Complete & Evaluate Interview?</h3>
+              <h3 className="text-base font-bold text-slate-900 dark:text-white">Complete & Evaluate Interview?</h3>
             </div>
 
-            <p className="text-xs text-slate-300 leading-relaxed">
-              You have answered <strong className="text-indigo-400">{answeredCount} of {questions.length}</strong> questions.
+            <p className="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+              You have answered <strong className="text-indigo-600 dark:text-indigo-400">{answeredCount} of {questions.length}</strong> questions.
               {answeredCount < questions.length && (
-                <span className="block mt-1 text-amber-300">
+                <span className="block mt-1 text-amber-600 dark:text-amber-300">
                   ⚠️ Note: Unanswered questions will receive 0 points.
                 </span>
               )}
@@ -425,7 +425,7 @@ export default function InterviewRoom() {
                 type="button"
                 onClick={() => setConfirmSubmitModal(false)}
                 disabled={isSubmitting}
-                className="px-4 py-2 rounded-xl bg-slate-800 text-slate-300 hover:text-white text-xs font-medium transition-colors"
+                className="px-4 py-2 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:text-white text-xs font-medium transition-colors"
               >
                 Keep Answering
               </button>
