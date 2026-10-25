@@ -9,6 +9,13 @@ import { evaluateAnswer, evaluateInterviewSession } from '../utils/evaluationEng
 
 export const startInterview = async (req, res) => {
   try {
+    if (req.user && req.user.role === 'admin') {
+      return res.status(403).json({
+        success: false,
+        message: 'Administrators cannot start mock interviews. Only candidate accounts are permitted to practice.'
+      });
+    }
+
     const { difficulty = 'Simple', category = 'All', count = 5 } = req.body;
 
     // Retrieve questions matching criteria
@@ -68,6 +75,13 @@ export const startInterview = async (req, res) => {
 
 export const submitInterview = async (req, res) => {
   try {
+    if (req.user && req.user.role === 'admin') {
+      return res.status(403).json({
+        success: false,
+        message: 'Administrators cannot submit mock interviews. Only candidate accounts are permitted to practice.'
+      });
+    }
+
     const { difficulty, category, answers = [], timeSpentSeconds = 0 } = req.body;
     const userId = req.user._id || req.user.id;
     const userName = req.user.name || 'Candidate';

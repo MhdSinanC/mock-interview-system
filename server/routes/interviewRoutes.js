@@ -5,13 +5,13 @@ import {
   getMyInterviewHistory,
   getInterviewResult
 } from '../controllers/interviewController.js';
-import { protect } from '../middleware/authMiddleware.js';
+import { protect, requireCandidate } from '../middleware/authMiddleware.js';
 
 const router = express.Router();
 
-router.post('/start', protect, startInterview);
-router.post('/submit', protect, submitInterview);
-router.get('/my-history', protect, getMyInterviewHistory);
+router.post('/start', protect, requireCandidate, startInterview);
+router.post('/submit', protect, requireCandidate, submitInterview);
+router.get('/my-history', protect, requireCandidate, getMyInterviewHistory);
 router.get('/:id', protect, getInterviewResult);
 
 export default router;

@@ -68,7 +68,7 @@ export default function Navbar() {
               Home
             </Link>
 
-            {isAuthenticated && (
+            {isAuthenticated && !isAdmin && (
               <>
                 <Link
                   to="/select"
@@ -118,7 +118,7 @@ export default function Navbar() {
                 }`}
               >
                 <ShieldCheck className="w-4 h-4 text-amber-500 dark:text-amber-400" />
-                Admin Panel
+                Admin Dashboard
               </Link>
             )}
           </nav>
@@ -209,7 +209,7 @@ export default function Navbar() {
           >
             Home
           </Link>
-          {isAuthenticated && (
+          {isAuthenticated && !isAdmin && (
             <>
               <Link
                 to="/select"
@@ -238,9 +238,10 @@ export default function Navbar() {
             <Link
               to="/admin"
               onClick={() => setMobileMenuOpen(false)}
-              className="block px-3 py-2 rounded-md text-base font-medium text-amber-600 dark:text-amber-300 hover:bg-slate-100 dark:hover:bg-slate-800"
+              className="flex items-center gap-2 px-3 py-2 rounded-md text-base font-medium text-amber-600 dark:text-amber-400 hover:bg-amber-50 dark:hover:bg-amber-500/10"
             >
-              Admin Panel
+              <ShieldCheck className="w-5 h-5 text-amber-500" />
+              Admin Dashboard
             </Link>
           )}
           <div className="pt-3 border-t border-slate-200 dark:border-slate-800">

@@ -29,11 +29,11 @@ export default function App() {
                 <Route path="/login" element={<Login />} />
                 <Route path="/register" element={<Register />} />
                 
-                {/* Protected Candidate Routes */}
+                {/* Protected Candidate Routes (Restricted from Administrators) */}
                 <Route
                   path="/dashboard"
                   element={
-                    <ProtectedRoute>
+                    <ProtectedRoute candidateOnly={true}>
                       <Dashboard />
                     </ProtectedRoute>
                   }
@@ -41,7 +41,7 @@ export default function App() {
                 <Route
                   path="/select"
                   element={
-                    <ProtectedRoute>
+                    <ProtectedRoute candidateOnly={true}>
                       <SelectDifficulty />
                     </ProtectedRoute>
                   }
@@ -49,7 +49,7 @@ export default function App() {
                 <Route
                   path="/interview"
                   element={
-                    <ProtectedRoute>
+                    <ProtectedRoute candidateOnly={true}>
                       <InterviewRoom />
                     </ProtectedRoute>
                   }
@@ -65,7 +65,7 @@ export default function App() {
                 <Route
                   path="/history"
                   element={
-                    <ProtectedRoute>
+                    <ProtectedRoute candidateOnly={true}>
                       <History />
                     </ProtectedRoute>
                   }

@@ -48,3 +48,14 @@ export const requireAdmin = (req, res, next) => {
     });
   }
 };
+
+export const requireCandidate = (req, res, next) => {
+  if (req.user && req.user.role === 'admin') {
+    return res.status(403).json({
+      success: false,
+      message: 'Access restricted: Administrators cannot take or participate in mock interviews. Please sign in with a candidate account to practice.'
+    });
+  }
+  next();
+};
+
