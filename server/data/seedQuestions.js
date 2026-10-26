@@ -1,5 +1,8 @@
 export const defaultQuestions = [
-  // SIMPLE / BEGINNER LEVEL
+  // ==========================================
+  // 1. FRONTEND
+  // ==========================================
+  // --- Simple Level ---
   {
     questionText: "What is the Virtual DOM in React and how does it improve performance?",
     category: "Frontend",
@@ -21,57 +24,47 @@ export const defaultQuestions = [
     maxScore: 10
   },
   {
-    questionText: "What is Express.js middleware and how is it used in Node.js applications?",
-    category: "Backend",
+    questionText: "Explain the CSS Box Model and how 'box-sizing: border-box' changes element sizing.",
+    category: "Frontend",
     difficulty: "Simple",
-    idealAnswer: "Middleware functions in Express have access to the request object (req), response object (res), and the next function in the request-response cycle. They can execute code, modify req/res, end the cycle, or call next() to pass control to the subsequent middleware. Examples include auth checks, body parsing, and logging.",
-    keywords: ["middleware", "req", "res", "next", "cycle", "request", "response", "authentication", "logging", "body parser"],
-    tips: "Explain req, res, next() parameters and give real use cases like JWT verification or error handling.",
+    idealAnswer: "The CSS Box Model consists of content, padding, border, and margin wrapping around every HTML element. By default, box-sizing is 'content-box', where specified width and height apply only to content, meaning padding and borders increase the total rendered dimensions. Setting 'box-sizing: border-box' includes padding and border within the specified width and height, preventing accidental layout overflows and simplifying responsive styling.",
+    keywords: ["box model", "content", "padding", "border", "margin", "box-sizing", "border-box", "content-box", "dimensions", "layout"],
+    tips: "Contrast content-box vs border-box and explain why border-box is standard in modern resets.",
     timeLimitSeconds: 120,
     maxScore: 10
   },
   {
-    questionText: "What is MongoDB and how does a document database differ from a relational database?",
-    category: "Database & SQL",
+    questionText: "What is Event Bubbling and Event Delegation in JavaScript?",
+    category: "Frontend",
     difficulty: "Simple",
-    idealAnswer: "MongoDB is a NoSQL document-oriented database that stores data in JSON-like BSON documents with dynamic schemas. Unlike relational databases which use tables, rows, columns, and rigid schemas with foreign keys, MongoDB groups documents into collections, allowing nested structures, horizontal scalability, and flexible schemas.",
-    keywords: ["nosql", "document", "bson", "json", "collection", "schema", "flexible", "relational", "tables", "scaling"],
-    tips: "Contrast collections vs tables, documents vs rows, and schema flexibility.",
+    idealAnswer: "Event bubbling is the phase where an event triggered on a child element propagates upwards through its parent DOM hierarchy to the document root. Event delegation leverages bubbling by attaching a single event listener to a common parent element rather than attaching individual listeners to multiple children. It inspects 'event.target' to handle events efficiently, saving memory and supporting dynamically added elements.",
+    keywords: ["event bubbling", "event delegation", "event propagation", "event target", "parent element", "listener", "memory", "dynamic elements", "dom"],
+    tips: "Explain event propagation direction and performance benefits for large dynamic lists.",
     timeLimitSeconds: 120,
     maxScore: 10
   },
   {
-    questionText: "What are the core components of the MERN stack and how do they communicate?",
-    category: "Full Stack",
+    questionText: "What are React Props versus State, and what is meant by unidirectional data flow?",
+    category: "Frontend",
     difficulty: "Simple",
-    idealAnswer: "MERN stands for MongoDB, Express.js, React.js, and Node.js. React renders the client-side single page UI. Express is a web server framework running on Node.js that serves RESTful or GraphQL APIs. The client communicates with the server via HTTP/JSON requests (using Axios or Fetch). Node/Express connects to MongoDB using Mongoose to persist and retrieve data.",
-    keywords: ["mongodb", "express", "react", "node", "mern", "rest", "api", "http", "json", "mongoose", "single page"],
-    tips: "Trace a request from browser click to React, Express API, Mongo query, and back to UI.",
+    idealAnswer: "Props (short for properties) are read-only inputs passed from parent to child components to configure them. State represents internal, mutable component memory managed within the component using useState. Unidirectional data flow means data flows downward from parent to child via props, while child components communicate upwards through callback functions, making state transitions predictable and easy to debug.",
+    keywords: ["props", "state", "read-only", "mutable", "unidirectional", "usestate", "parent to child", "callbacks", "predictable"],
+    tips: "Contrast immutable props vs mutable local state and describe how children notify parents.",
     timeLimitSeconds: 120,
     maxScore: 10
   },
   {
-    questionText: "Tell me about yourself, your technical background, and what drives your passion for software development.",
-    category: "HR & Behavioral",
+    questionText: "Explain the difference between '==' (loose equality) and '===' (strict equality) in JavaScript.",
+    category: "Frontend",
     difficulty: "Simple",
-    idealAnswer: "A strong response follows the Present-Past-Future structure: Present: current education, tech stack (e.g. MERN stack, JavaScript), and recent projects built. Past: how interest in programming started, problem-solving passion. Future: why this interview role is the exciting next step to contribute and grow technically.",
-    keywords: ["background", "education", "mern", "projects", "problem solving", "passion", "career", "skills", "growth"],
-    tips: "Keep answer between 60-90 seconds, highlight concrete projects, and connect directly to engineering goals.",
-    timeLimitSeconds: 150,
-    maxScore: 10
-  },
-  {
-    questionText: "What is an Array and how does its memory allocation differ from a Linked List?",
-    category: "Data Structures",
-    difficulty: "Simple",
-    idealAnswer: "An Array stores elements in contiguous memory locations, allowing O(1) random access by index, but resizing and insertions/deletions take O(N). A Linked List consists of nodes where each node holds data and a pointer to the next node; nodes are stored non-contiguously, so indexing takes O(N), but insertion/deletion at a known pointer is O(1).",
-    keywords: ["array", "linked list", "contiguous", "memory", "o(1)", "o(n)", "pointer", "node", "random access", "insertion"],
-    tips: "Highlight random access index lookup O(1) vs traversal O(N) and memory locality.",
+    idealAnswer: "'==' performs loose equality, which attempts implicit type coercion before comparing values (for example, '5' == 5 evaluates to true). '===' performs strict equality, comparing both value and data type without any coercion (so '5' === 5 evaluates to false). Strict equality is strongly recommended to prevent subtle bugs caused by JavaScript coercion rules.",
+    keywords: ["equality", "strict equality", "loose equality", "type coercion", "data type", "implicit conversion", "operand", "best practice"],
+    tips: "Mention type coercion, provide an example with string vs number or null vs undefined.",
     timeLimitSeconds: 120,
     maxScore: 10
   },
 
-  // INTERMEDIATE LEVEL
+  // --- Intermediate Level ---
   {
     questionText: "Explain React Hooks, specifically useEffect and its dependency array. How do cleanup functions work?",
     category: "Frontend",
@@ -83,67 +76,57 @@ export const defaultQuestions = [
     maxScore: 10
   },
   {
-    questionText: "What is the Node.js Event Loop, and how does it handle non-blocking asynchronous I/O with single-threaded execution?",
-    category: "Backend",
+    questionText: "Explain the React Context API. When should you choose Context versus an external state management library like Redux or Zustand?",
+    category: "Frontend",
     difficulty: "Intermediate",
-    idealAnswer: "Node.js runs on a single main JavaScript thread powered by V8 and libuv. The Event Loop coordinates asynchronous operations across different phases: timers (setTimeout), pending callbacks, idle/prepare, poll (incoming I/O), check (setImmediate), and close callbacks. Heavy I/O or crypto operations are offloaded to libuv's thread pool, allowing the main thread to remain unblocked and process callback queues.",
-    keywords: ["event loop", "single thread", "libuv", "v8", "non-blocking", "asynchronous", "thread pool", "microtasks", "timers", "poll phase"],
-    tips: "Discuss phases of the event loop, microtask queue (process.nextTick, Promise), and libuv.",
+    idealAnswer: "React Context provides a way to pass data through the component tree without passing props down manually at every level (avoiding prop drilling). It consists of createContext, a Provider component, and useContext. Context is ideal for low-frequency global state like themes, locale, or authenticated user info. For high-frequency state updates, complex asynchronous workflows, or fine-grained rendering performance, libraries like Redux Toolkit or Zustand are preferred because Context triggers re-renders on all consuming components when value changes.",
+    keywords: ["context api", "prop drilling", "provider", "usecontext", "redux", "zustand", "global state", "re-render", "performance"],
+    tips: "Highlight when Context is sufficient (themes, auth) and its re-rendering limitation for fast-updating state.",
     timeLimitSeconds: 150,
     maxScore: 10
   },
   {
-    questionText: "How does JWT (JSON Web Token) authentication work, and how should tokens be secured between client and server?",
-    category: "Full Stack",
+    questionText: "What are Closures in JavaScript and how do they enable data privacy and function factories?",
+    category: "Frontend",
     difficulty: "Intermediate",
-    idealAnswer: "A JWT consists of three parts: Header (algorithm), Payload (claims/user info), and Signature (signed with a secret key). When a user logs in, the server verifies credentials and signs a token. The client stores it (preferably in an httpOnly secure cookie to mitigate XSS attacks) and sends it in the Authorization Bearer header or cookie on subsequent requests. The server validates the signature without querying the database for session state.",
-    keywords: ["jwt", "header", "payload", "signature", "httponly", "cookie", "bearer", "xss", "csrf", "stateless", "token"],
-    tips: "Break down the 3 components of JWT and contrast localStorage vs httpOnly cookie security.",
+    idealAnswer: "A closure is the combination of a function bundled together with references to its lexical environment. In JavaScript, inner functions have access to the outer function's scope even after the outer function has finished executing. Closures enable data privacy by emulating private variables (encapsulation), creating function factories, and memoizing expensive computations.",
+    keywords: ["closure", "lexical scope", "lexical environment", "encapsulation", "data privacy", "outer function", "inner function", "memoization"],
+    tips: "Explain how variable references persist in memory after outer function returns.",
     timeLimitSeconds: 150,
     maxScore: 10
   },
   {
-    questionText: "Explain indexing in MongoDB. How do compound indexes and execution plans (explain()) optimize query performance?",
-    category: "Database & SQL",
+    questionText: "How do Promises work in JavaScript? Contrast Promises with async/await and explain Promise.all vs Promise.allSettled.",
+    category: "Frontend",
     difficulty: "Intermediate",
-    idealAnswer: "Indexes in MongoDB use B-trees to locate documents quickly without scanning every document in a collection (COLLSCAN vs IXSCAN). A compound index indexes multiple fields, following the Equality-Sort-Range (ESR) rule. The explain('executionStats') method allows analyzing queries to inspect execution time, totalDocsExamined, and index usage to ensure queries avoid full table scans.",
-    keywords: ["index", "b-tree", "collscan", "ixscan", "compound index", "explain", "executionstats", "performance", "esr rule"],
-    tips: "Mention COLLSCAN vs IXSCAN and the ESR (Equality, Sort, Range) rule.",
+    idealAnswer: "A Promise is an object representing the eventual completion or failure of an asynchronous operation with three states: pending, fulfilled, or rejected. async/await is syntactic sugar over Promises that makes asynchronous code look synchronous and allows try/catch error handling. Promise.all runs promises concurrently and short-circuits on the first rejection, whereas Promise.allSettled waits for all promises to complete regardless of fulfillment or rejection and returns the outcome of each.",
+    keywords: ["promise", "async", "await", "pending", "fulfilled", "rejected", "promise.all", "promise.allsettled", "try catch", "concurrency"],
+    tips: "Explain state transitions, error handling with try/catch, and fail-fast vs all-settled.",
     timeLimitSeconds: 150,
     maxScore: 10
   },
   {
-    questionText: "How does a Hash Table achieve O(1) average time complexity? How are collisions handled?",
-    category: "Data Structures",
+    questionText: "What strategies and React APIs would you use to optimize the rendering performance of a React application?",
+    category: "Frontend",
     difficulty: "Intermediate",
-    idealAnswer: "A Hash Table uses a hash function to map keys to bucket indices in an array, enabling average O(1) lookups, insertions, and deletions. When different keys generate the same hash (collision), it can be resolved using Separate Chaining (linked lists or balanced trees at each bucket) or Open Addressing (Linear Probing, Quadratic Probing, Double Hashing). If the load factor becomes too high, rehashing is triggered.",
-    keywords: ["hash table", "hash function", "collision", "o(1)", "separate chaining", "open addressing", "linear probing", "load factor", "rehashing"],
-    tips: "Explain how load factor affects degradation to O(N) and compare Chaining vs Open Addressing.",
+    idealAnswer: "React performance can be optimized using: 1) React.memo to prevent unnecessary component re-renders when props haven't changed. 2) useMemo to cache expensive calculations and useCallback to preserve function reference identity across renders. 3) Code splitting with React.lazy and Suspense to lazy-load routes and heavy components. 4) Virtualization (windowing) with react-window for long lists. 5) Avoiding anonymous inline functions and object literals in JSX props when passing to memoized children.",
+    keywords: ["performance", "react.memo", "usememo", "usecallback", "code splitting", "react.lazy", "suspense", "virtualization", "re-renders", "bundle size"],
+    tips: "Detail React.memo, useMemo/useCallback, route-level code splitting, and list virtualization.",
     timeLimitSeconds: 150,
     maxScore: 10
   },
   {
-    questionText: "Describe a challenging bug or technical obstacle you encountered in a recent project. How did you diagnose and resolve it?",
-    category: "HR & Behavioral",
+    questionText: "Explain the differences between CSS Flexbox and CSS Grid. When would you choose one over the other?",
+    category: "Frontend",
     difficulty: "Intermediate",
-    idealAnswer: "A great answer uses the STAR technique: Situation: what project and environment. Task: what was failing or breaking. Action: methodical debugging steps (checking network logs, adding tests, inspecting call stacks, isolating state). Result: what was the fix, measurable outcome, and key technical lesson learned to prevent future occurrences.",
-    keywords: ["star method", "situation", "task", "action", "result", "debugging", "root cause", "resolution", "logs", "testing"],
-    tips: "Focus 70% of time on your specific Action and measurable Result rather than just describing the problem.",
+    idealAnswer: "CSS Flexbox is a one-dimensional layout model designed for laying out items along either a row or a column. It excels at distributing space, alignment within a bar (like navbars or button groups), and dynamic content sizing. CSS Grid is a two-dimensional layout system designed for rows and columns simultaneously. It excels at macro-layouts (page templates, dashboards, photo galleries) where rigid grid tracks and area definitions are required.",
+    keywords: ["flexbox", "css grid", "one-dimensional", "two-dimensional", "row", "column", "alignment", "macro layout", "template areas"],
+    tips: "State 1D (Flexbox) vs 2D (Grid) and provide concrete UI examples for each.",
     timeLimitSeconds: 150,
     maxScore: 10
   },
 
-  // HARD / ADVANCED LEVEL
-  {
-    questionText: "How would you architect a high-concurrency real-time notification system in Node.js and MongoDB? Address bottlenecks and scalability.",
-    category: "Backend",
-    difficulty: "Hard",
-    idealAnswer: "To handle high concurrency: 1) Decouple notification publishing using a message queue like Redis Pub/Sub, RabbitMQ, or Apache Kafka. 2) Use WebSockets (Socket.io) with Redis adapter for horizontal scaling across multiple Node.js instances behind an Nginx load balancer. 3) Cache frequent user reads in Redis. 4) Use MongoDB change streams or write batches, indexing user_id and timestamp. 5) Implement rate limiting, connection heartbeat, and backpressure handling.",
-    keywords: ["real-time", "websockets", "redis", "pub sub", "message queue", "kafka", "load balancer", "horizontal scaling", "rate limit", "mongodb change streams"],
-    tips: "Cover decoupling with message broker, multi-node websocket scaling with Redis adapter, and caching.",
-    timeLimitSeconds: 180,
-    maxScore: 10
-  },
+  // --- Hard Level ---
   {
     questionText: "Explain React Server Components (RSC) vs Client Components and Server-Side Rendering (SSR). How does hydration work?",
     category: "Frontend",
@@ -155,6 +138,316 @@ export const defaultQuestions = [
     maxScore: 10
   },
   {
+    questionText: "What are Core Web Vitals (LCP, INP, CLS) and how would you optimize a modern Single Page Application to achieve top scores?",
+    category: "Frontend",
+    difficulty: "Hard",
+    idealAnswer: "Core Web Vitals are Google's metrics for real-world user experience: Largest Contentful Paint (LCP < 2.5s) measures loading speed; Interaction to Next Paint (INP < 200ms) measures responsiveness; Cumulative Layout Shift (CLS < 0.1) measures visual stability. To optimize: 1) For LCP: optimize critical rendering path, preload hero images, implement CDN caching, and minify CSS/JS. 2) For INP: break up long JavaScript tasks using Web Workers or scheduler.yield(), minimize main thread blocking. 3) For CLS: reserve explicit aspect-ratio and size dimensions for images/ads and avoid injecting dynamic content above existing text.",
+    keywords: ["core web vitals", "lcp", "inp", "cls", "largest contentful paint", "layout shift", "responsiveness", "critical rendering path", "cdn", "main thread"],
+    tips: "Define all three metrics with target thresholds and specific remediation techniques.",
+    timeLimitSeconds: 180,
+    maxScore: 10
+  },
+  {
+    questionText: "How would you design and implement a Micro-Frontend architecture using Webpack Module Federation? What challenges arise with shared dependencies and styling?",
+    category: "Frontend",
+    difficulty: "Hard",
+    idealAnswer: "Micro-frontends decompose a monolithic frontend into independently deployable sub-applications. Webpack 5 Module Federation enables this by exposing modules from remotes and consuming them in hosts at runtime without package bundling. Key architectural decisions include: 1) Shared dependencies: configure shared singleton libraries (like React) to prevent multiple React instances in runtime. 2) Routing: host handles shell routes and remotes handle sub-paths. 3) Styling: use CSS modules, scoped Tailwind, or Shadow DOM to prevent style leakage. 4) Communication: use lightweight custom browser events or a shared state bus.",
+    keywords: ["micro-frontend", "module federation", "webpack", "remote", "host", "shared dependencies", "singleton", "independent deployment", "style isolation", "shadow dom"],
+    tips: "Cover Module Federation remote/host configuration, single React runtime instance, and style containment.",
+    timeLimitSeconds: 180,
+    maxScore: 10
+  },
+  {
+    questionText: "How do you design a custom React hook that handles concurrent API requests, prevents race conditions, and avoids memory leaks on unmount?",
+    category: "Frontend",
+    difficulty: "Hard",
+    idealAnswer: "To handle asynchronous concurrency robustly: 1) Use AbortController: inside useEffect, instantiate an AbortController and pass its signal to fetch. In the cleanup function, call controller.abort() to cancel in-flight requests on dependency change or unmount. 2) Prevent race conditions: check if response matches current active request or maintain a boolean isCancelled flag. 3) State management: track loading, error, and data states cleanly with useReducer. 4) Caching: store responses in a ref or global cache to prevent redundant network round-trips.",
+    keywords: ["custom hook", "abortcontroller", "race condition", "unmount", "cleanup", "signal", "memory leak", "usereducer", "concurrency", "in-flight request"],
+    tips: "Describe AbortController signal attachment and cleanup function abort() call.",
+    timeLimitSeconds: 180,
+    maxScore: 10
+  },
+  {
+    questionText: "Explain how Cross-Site Scripting (XSS) and Cross-Site Request Forgery (CSRF) vulnerabilities affect Single Page Applications and how to defend against them.",
+    category: "Frontend",
+    difficulty: "Hard",
+    idealAnswer: "XSS occurs when malicious JavaScript is injected into the DOM (Stored, Reflected, or DOM-based), allowing attackers to steal session tokens or execute arbitrary actions. Defense: sanitize user input using DOMPurify, use React's built-in JSX escaping (avoid dangerouslySetInnerHTML), and configure a strict Content Security Policy (CSP). CSRF tricks authenticated users into submitting unauthorized requests to a trusted site. Defense: use httpOnly cookies with SameSite=Lax/Strict flags, implement Anti-CSRF double-submit cookie tokens, or use Authorization headers with Bearer tokens which browsers do not automatically attach cross-origin.",
+    keywords: ["xss", "csrf", "cross-site scripting", "content security policy", "csp", "samesite", "httponly", "dompurify", "sanitization", "token"],
+    tips: "Contrast XSS (script injection) vs CSRF (unauthorized state-changing request) and detail defenses for each.",
+    timeLimitSeconds: 180,
+    maxScore: 10
+  },
+
+
+  // ==========================================
+  // 2. BACKEND
+  // ==========================================
+  // --- Simple Level ---
+  {
+    questionText: "What is Express.js middleware and how is it used in Node.js applications?",
+    category: "Backend",
+    difficulty: "Simple",
+    idealAnswer: "Middleware functions in Express have access to the request object (req), response object (res), and the next function in the request-response cycle. They can execute code, modify req/res, end the cycle, or call next() to pass control to the subsequent middleware. Examples include auth checks, body parsing, and logging.",
+    keywords: ["middleware", "req", "res", "next", "cycle", "request", "response", "authentication", "logging", "body parser"],
+    tips: "Explain req, res, next() parameters and give real use cases like JWT verification or error handling.",
+    timeLimitSeconds: 120,
+    maxScore: 10
+  },
+  {
+    questionText: "Explain RESTful API design principles, standard HTTP verbs, and common HTTP status codes.",
+    category: "Backend",
+    difficulty: "Simple",
+    idealAnswer: "REST (Representational State Transfer) is an architectural style based on stateless client-server communication using standard HTTP methods: GET (read resource), POST (create resource), PUT (replace resource), PATCH (partial update), and DELETE (remove resource). Key status codes: 200 OK (success), 201 Created (resource created), 400 Bad Request (client error), 401 Unauthorized (unauthenticated), 403 Forbidden (insufficient permissions), 404 Not Found, and 500 Internal Server Error. Resources are represented by nouns in URIs (e.g. /api/users).",
+    keywords: ["rest", "stateless", "http methods", "get", "post", "put", "delete", "status codes", "200 ok", "201 created", "401 unauthorized", "404 not found", "idempotent"],
+    tips: "List the 5 primary HTTP verbs, distinguish 401 vs 403, and explain resource-based URI naming.",
+    timeLimitSeconds: 120,
+    maxScore: 10
+  },
+  {
+    questionText: "What are Node.js core modules and what is the difference between CommonJS and ES Modules?",
+    category: "Backend",
+    difficulty: "Simple",
+    idealAnswer: "Node.js includes built-in core modules like 'fs' (file system), 'path' (path resolution), 'http' (server creation), and 'crypto' (hashing/encryption) that require no external installation. CommonJS uses 'require()' and 'module.exports'; it loads modules synchronously at runtime. ES Modules (ESM) use 'import' and 'export'; it is the official ECMAScript standard, parsed statically at compile time, supporting top-level await and tree-shaking.",
+    keywords: ["core modules", "fs", "path", "http", "commonjs", "es modules", "require", "module.exports", "import", "export", "static analysis"],
+    tips: "Mention core built-in modules and contrast synchronous require() with static ESM import.",
+    timeLimitSeconds: 120,
+    maxScore: 10
+  },
+  {
+    questionText: "What is CORS (Cross-Origin Resource Sharing) and why does the browser enforce it?",
+    category: "Backend",
+    difficulty: "Simple",
+    idealAnswer: "CORS is a browser security mechanism based on the Same-Origin Policy (SOP). It prevents a web page from making requests to a different domain, protocol, or port unless the server explicitly grants permission via HTTP headers (such as Access-Control-Allow-Origin). For non-simple requests (like PUT, DELETE, or requests with custom headers), browsers send an automatic HTTP OPTIONS preflight request to verify server permissions before sending the actual request.",
+    keywords: ["cors", "cross-origin", "same-origin policy", "preflight", "options request", "access-control-allow-origin", "security", "headers", "browser"],
+    tips: "Explain same-origin definition (protocol, domain, port) and the OPTIONS preflight request.",
+    timeLimitSeconds: 120,
+    maxScore: 10
+  },
+  {
+    questionText: "How do you implement centralized error handling in an Express.js backend?",
+    category: "Backend",
+    difficulty: "Simple",
+    idealAnswer: "Express supports centralized error handling using a dedicated 4-argument middleware: `(err, req, res, next)`. Any error passed into `next(error)` or thrown in async route handlers (or caught with express-async-errors) bypasses standard middleware and triggers this error handler. In it, you inspect error status code, format a consistent JSON response `{ success: false, message: err.message }`, log the stack trace internally, and hide sensitive internal debugging details from client in production.",
+    keywords: ["error handling", "middleware", "next(err)", "status code", "stack trace", "centralized", "async", "express", "json response"],
+    tips: "Mention the exact 4-parameter signature (err, req, res, next) and why sensitive stacks shouldn't leak to production clients.",
+    timeLimitSeconds: 120,
+    maxScore: 10
+  },
+
+  // --- Intermediate Level ---
+  {
+    questionText: "What is the Node.js Event Loop, and how does it handle non-blocking asynchronous I/O with single-threaded execution?",
+    category: "Backend",
+    difficulty: "Intermediate",
+    idealAnswer: "Node.js runs on a single main JavaScript thread powered by V8 and libuv. The Event Loop coordinates asynchronous operations across different phases: timers (setTimeout), pending callbacks, idle/prepare, poll (incoming I/O), check (setImmediate), and close callbacks. Heavy I/O or crypto operations are offloaded to libuv's thread pool, allowing the main thread to remain unblocked and process callback queues.",
+    keywords: ["event loop", "single thread", "libuv", "v8", "non-blocking", "asynchronous", "thread pool", "microtasks", "timers", "poll phase"],
+    tips: "Discuss phases of the event loop, microtask queue (process.nextTick, Promise), and libuv.",
+    timeLimitSeconds: 150,
+    maxScore: 10
+  },
+  {
+    questionText: "Explain Authentication versus Authorization, and how to build a Role-Based Access Control (RBAC) middleware in Express.",
+    category: "Backend",
+    difficulty: "Intermediate",
+    idealAnswer: "Authentication verifies WHO a user is (e.g. verifying credentials via email and password, issuing a JWT). Authorization verifies WHAT an authenticated user is permitted to do (e.g. regular candidate vs system admin). RBAC middleware checks `req.user.role` against allowed roles for that route: `const authorize = (...roles) => (req, res, next) => { if (!roles.includes(req.user.role)) return res.status(403).json({ message: 'Forbidden' }); next(); };`",
+    keywords: ["authentication", "authorization", "rbac", "role-based access control", "jwt", "middleware", "req.user", "403 forbidden", "permissions"],
+    tips: "Clearly distinguish who you are (AuthN) vs what you can do (AuthZ) and provide code snippet for role middleware.",
+    timeLimitSeconds: 150,
+    maxScore: 10
+  },
+  {
+    questionText: "What are Node.js Streams and Buffers? How do they prevent high memory consumption when handling large file uploads or video streaming?",
+    category: "Backend",
+    difficulty: "Intermediate",
+    idealAnswer: "A Buffer is a temporary chunk of raw binary memory allocated outside the V8 heap. A Stream is an interface for processing streaming data piece-by-piece (chunks) without loading the entire payload into RAM at once. Types include Readable, Writable, Duplex, and Transform streams. Using `readableStream.pipe(writableStream)` or pipeline() allows handling multi-gigabyte files with low, constant memory footprint and automatic backpressure handling.",
+    keywords: ["streams", "buffers", "chunks", "pipe", "backpressure", "readable", "writable", "memory efficiency", "v8 heap", "large files"],
+    tips: "Explain chunk-by-chunk processing vs reading entire file with fs.readFile, and define backpressure.",
+    timeLimitSeconds: 150,
+    maxScore: 10
+  },
+  {
+    questionText: "How do you implement API Rate Limiting in Node.js, and what algorithms are commonly used?",
+    category: "Backend",
+    difficulty: "Intermediate",
+    idealAnswer: "Rate limiting restricts the number of requests a client can make in a given timeframe to prevent abuse, brute-force attacks, and server resource exhaustion. It can be implemented using middleware like express-rate-limit backed by Redis for distributed deployments. Common algorithms: 1) Token Bucket (tokens added at fixed rate, consumed per request). 2) Leaky Bucket (smooths bursty traffic). 3) Fixed Window Counter. 4) Sliding Window Log / Counter (avoids burst spikes at window boundaries).",
+    keywords: ["rate limiting", "redis", "token bucket", "sliding window", "leaky bucket", "ddos", "brute force", "express-rate-limit", "throttling", "http 429"],
+    tips: "Contrast Token Bucket vs Sliding Window and explain returning HTTP 429 Too Many Requests.",
+    timeLimitSeconds: 150,
+    maxScore: 10
+  },
+  {
+    questionText: "Explain how Node.js Cluster Module and Worker Threads differ. When should you use which?",
+    category: "Backend",
+    difficulty: "Intermediate",
+    idealAnswer: "Node.js runs single-threaded by default. The Cluster Module uses multi-processing (forking multiple child processes) where each worker has its own memory space and V8 instance, sharing the same server port to scale network I/O across multiple CPU cores. Worker Threads execute within a single process, sharing memory via SharedArrayBuffer, designed for CPU-intensive JavaScript tasks (like image processing, encryption, or heavy calculations) without blocking the main event loop.",
+    keywords: ["cluster module", "worker threads", "multi-process", "multi-thread", "v8 instance", "shared memory", "cpu-bound", "event loop", "horizontal scaling", "fork"],
+    tips: "Differentiate separate processes/memory (Cluster for I/O) vs shared process/memory (Worker Threads for CPU computations).",
+    timeLimitSeconds: 150,
+    maxScore: 10
+  },
+
+  // --- Hard Level ---
+  {
+    questionText: "How would you architect a high-concurrency real-time notification system in Node.js and MongoDB? Address bottlenecks and scalability.",
+    category: "Backend",
+    difficulty: "Hard",
+    idealAnswer: "To handle high concurrency: 1) Decouple notification publishing using a message queue like Redis Pub/Sub, RabbitMQ, or Apache Kafka. 2) Use WebSockets (Socket.io) with Redis adapter for horizontal scaling across multiple Node.js instances behind an Nginx load balancer. 3) Cache frequent user reads in Redis. 4) Use MongoDB change streams or write batches, indexing user_id and timestamp. 5) Implement rate limiting, connection heartbeat, and backpressure handling.",
+    keywords: ["real-time", "websockets", "redis", "pub sub", "message queue", "kafka", "load balancer", "horizontal scaling", "rate limit", "mongodb change streams"],
+    tips: "Cover decoupling with message broker, multi-node websocket scaling with Redis adapter, and caching.",
+    timeLimitSeconds: 180,
+    maxScore: 10
+  },
+  {
+    questionText: "Compare Microservices communication: Synchronous (REST/gRPC) vs Asynchronous Message Queues (RabbitMQ/Kafka). How do you handle distributed transactions?",
+    category: "Backend",
+    difficulty: "Hard",
+    idealAnswer: "Synchronous communication (REST, gRPC) waits for a direct response, introducing tight coupling, latency cascading, and single points of failure. Asynchronous communication uses message brokers (RabbitMQ for complex routing, Apache Kafka for high-throughput distributed event streaming) to decouple services and handle spikes. For distributed transactions across microservices, two-phase commit (2PC) is rarely used due to blocking locks; the industry standard is the Saga Pattern (orchestrated or choreographed) with compensating transactions to ensure eventual consistency.",
+    keywords: ["microservices", "grpc", "message queue", "rabbitmq", "kafka", "saga pattern", "eventual consistency", "compensating transaction", "decoupling", "distributed systems"],
+    tips: "Contrast gRPC vs Kafka and explain the Saga pattern with compensating transactions.",
+    timeLimitSeconds: 180,
+    maxScore: 10
+  },
+  {
+    questionText: "Explain Distributed Caching Strategies: Cache-Aside vs Write-Through vs Write-Behind. How do you prevent cache stampede (thundering herd)?",
+    category: "Backend",
+    difficulty: "Hard",
+    idealAnswer: "Cache-Aside (Lazy Loading): application checks cache first; if miss, fetches from database, updates cache, and returns. Write-Through: writes update cache and database synchronously. Write-Behind: writes update cache immediately and write asynchronously to database in batches. To prevent Cache Stampede (when high concurrency hits an expired hot key simultaneously): 1) Mutex locking (single worker fetches and refills cache while others wait). 2) Probabilistic early expiration (XFetch algorithm). 3) Background pre-warming/cron refresh before TTL expiry.",
+    keywords: ["cache-aside", "write-through", "write-behind", "cache stampede", "thundering herd", "redis", "mutex", "ttl", "cache invalidation", "xfetch"],
+    tips: "Describe all 3 write/read patterns and provide at least two remedies for cache stampede.",
+    timeLimitSeconds: 180,
+    maxScore: 10
+  },
+  {
+    questionText: "How do you detect, diagnose, and prevent database connection exhaustion and memory leaks in a production Node.js service?",
+    category: "Backend",
+    difficulty: "Hard",
+    idealAnswer: "Connection exhaustion occurs when connections are opened but not released, or connection pool size is smaller than peak concurrency. Remedies: configure connection pools with maxPoolSize and minPoolSize, set strict connectTimeoutMS and socketTimeoutMS, and ensure queries always execute inside try/finally blocks. Memory leaks happen from uncleaned event listeners, global variables, or unbounded caches. Diagnosis: inspect heap snapshots with Chrome DevTools or Clinic.js, monitor V8 heap statistics (`v8.getHeapStatistics()`), and analyze garbage collection pauses.",
+    keywords: ["connection pool", "connection exhaustion", "memory leak", "heap snapshot", "chrome devtools", "clinic.js", "v8 heap", "garbage collection", "try finally", "timeout"],
+    tips: "Cover connection pool configuration, heap snapshot diagnosis, and common sources of Node.js leaks.",
+    timeLimitSeconds: 180,
+    maxScore: 10
+  },
+  {
+    questionText: "What is an API Gateway pattern? How does it handle SSL termination, request routing, authentication offloading, and circuit breaking?",
+    category: "Backend",
+    difficulty: "Hard",
+    idealAnswer: "An API Gateway serves as the single reverse-proxy entry point for client requests to backend services. It abstracts internal microservice topology. Key capabilities: 1) SSL/TLS Termination: decrypts incoming HTTPS traffic at the edge, reducing compute overhead on backend nodes. 2) Request Routing and Aggregation: routes requests to corresponding services and combines multiple calls into one response. 3) Centralized Auth: validates JWTs before requests reach microservices. 4) Circuit Breaking: (e.g. Netflix Hystrix pattern) trips open when downstream service fails repeatedly, returning fallback responses and preventing cascading failures.",
+    keywords: ["api gateway", "reverse proxy", "ssl termination", "request aggregation", "authentication offloading", "circuit breaker", "cascading failure", "rate limiting", "microservices"],
+    tips: "Explain role as single entry point and how Circuit Breaker prevents cascading outages.",
+    timeLimitSeconds: 180,
+    maxScore: 10
+  },
+
+
+  // ==========================================
+  // 3. FULL STACK
+  // ==========================================
+  // --- Simple Level ---
+  {
+    questionText: "What are the core components of the MERN stack and how do they communicate?",
+    category: "Full Stack",
+    difficulty: "Simple",
+    idealAnswer: "MERN stands for MongoDB, Express.js, React.js, and Node.js. React renders the client-side single page UI. Express is a web server framework running on Node.js that serves RESTful or GraphQL APIs. The client communicates with the server via HTTP/JSON requests (using Axios or Fetch). Node/Express connects to MongoDB using Mongoose to persist and retrieve data.",
+    keywords: ["mongodb", "express", "react", "node", "mern", "rest", "api", "http", "json", "mongoose", "single page"],
+    tips: "Trace a request from browser click to React, Express API, Mongo query, and back to UI.",
+    timeLimitSeconds: 120,
+    maxScore: 10
+  },
+  {
+    questionText: "Why must environment variables (.env) be kept secret, and what is the difference between client-side and server-side environment variables?",
+    category: "Full Stack",
+    difficulty: "Simple",
+    idealAnswer: "Environment variables store sensitive configuration such as database connection strings, JWT secret keys, and third-party API credentials outside source code. Server-side environment variables (via process.env) remain confidential on the server. Client-side variables (e.g. Vite's VITE_ prefix or React's REACT_APP_) are compiled directly into public JavaScript bundles sent to browsers. Therefore, private keys and database passwords must NEVER be prefixed for client exposure.",
+    keywords: ["environment variables", ".env", "process.env", "client-side", "server-side", "security", "bundle", "credentials", "vite", "secrets"],
+    tips: "Clarify that client-side variables are public in browser bundles while server-side variables are hidden.",
+    timeLimitSeconds: 120,
+    maxScore: 10
+  },
+  {
+    questionText: "Explain Client-Side Routing (e.g. React Router) versus Server-Side Routing in Single Page Applications.",
+    category: "Full Stack",
+    difficulty: "Simple",
+    idealAnswer: "In traditional server-side routing, clicking a link requests a brand new HTML page from the server, causing a full page refresh. In client-side routing (Single Page Applications using React Router), the browser loads a single HTML bundle. Subsequent route transitions intercept browser URL changes via HTML5 History API (pushState/replaceState) and swap React components dynamically without triggering server round-trips, creating a smooth, instantaneous user experience.",
+    keywords: ["client-side routing", "server-side routing", "react router", "spa", "single page application", "history api", "pushstate", "full page reload", "components"],
+    tips: "Explain HTML5 History API pushState vs traditional HTTP GET requests for HTML.",
+    timeLimitSeconds: 120,
+    maxScore: 10
+  },
+  {
+    questionText: "Why is server-side validation mandatory even if form validation is already implemented on the React client?",
+    category: "Full Stack",
+    difficulty: "Simple",
+    idealAnswer: "Client-side validation provides immediate feedback and a smooth user experience (e.g. checking email format before submit), but it runs in an untrusted user environment that can be easily bypassed using tools like Postman, curl, or browser DevTools. Server-side validation is strictly required as the gatekeeper of system integrity, preventing invalid data, SQL/NoSQL injection, and corrupted database state.",
+    keywords: ["validation", "client-side validation", "server-side validation", "security", "integrity", "postman", "curl", "injection", "untrusted client"],
+    tips: "Differentiate client validation for UX vs server validation for security and data integrity.",
+    timeLimitSeconds: 120,
+    maxScore: 10
+  },
+  {
+    questionText: "How do you connect a React frontend to an Express backend using Axios or Fetch with clean error handling?",
+    category: "Full Stack",
+    difficulty: "Simple",
+    idealAnswer: "You configure an Axios instance or Fetch wrapper with a centralized `baseURL` (e.g. `/api`), timeout, and request headers. React components make calls inside useEffect or custom hooks, managing three states: data, loading (spinner), and error (alert). Use Axios interceptors to automatically attach JWT authorization headers to outgoing requests and catch 401 Unauthorized responses to redirect users to login.",
+    keywords: ["axios", "fetch", "baseurl", "interceptors", "loading state", "error state", "jwt", "authorization header", "useeffect", "async"],
+    tips: "Mention loading/error/data states and the use of request/response interceptors.",
+    timeLimitSeconds: 120,
+    maxScore: 10
+  },
+
+  // --- Intermediate Level ---
+  {
+    questionText: "How does JWT (JSON Web Token) authentication work, and how should tokens be secured between client and server?",
+    category: "Full Stack",
+    difficulty: "Intermediate",
+    idealAnswer: "A JWT consists of three parts: Header (algorithm), Payload (claims/user info), and Signature (signed with a secret key). When a user logs in, the server verifies credentials and signs a token. The client stores it (preferably in an httpOnly secure cookie to mitigate XSS attacks) and sends it in the Authorization Bearer header or cookie on subsequent requests. The server validates the signature without querying the database for session state.",
+    keywords: ["jwt", "header", "payload", "signature", "httponly", "cookie", "bearer", "xss", "csrf", "stateless", "token"],
+    tips: "Break down the 3 components of JWT and contrast localStorage vs httpOnly cookie security.",
+    timeLimitSeconds: 150,
+    maxScore: 10
+  },
+  {
+    questionText: "Design a secure file upload pipeline in a full-stack application. How do you handle file validation and cloud storage (e.g. AWS S3)?",
+    category: "Full Stack",
+    difficulty: "Intermediate",
+    idealAnswer: "1) Frontend: validate file size and MIME type before submission. 2) Backend: use Multer to receive multipart/form-data with strict fileFilter (magic byte validation rather than just trusting extension) and limits. 3) Storage: never store uploaded files on ephemeral application servers. Instead, upload to cloud object storage (AWS S3) and store the resulting secure URL in MongoDB. Alternatively, have backend issue pre-signed S3 URLs so client uploads directly to S3, bypassing server memory entirely.",
+    keywords: ["file upload", "multer", "aws s3", "multipart/form-data", "mime type", "pre-signed url", "cloud storage", "magic bytes", "security"],
+    tips: "Mention pre-signed URLs, file validation by magic bytes, and why server disk shouldn't store files.",
+    timeLimitSeconds: 150,
+    maxScore: 10
+  },
+  {
+    questionText: "Compare Offset-based vs Cursor-based Pagination for a full-stack social media feed or product list.",
+    category: "Full Stack",
+    difficulty: "Intermediate",
+    idealAnswer: "Offset pagination uses `SKIP` and `LIMIT` (`SELECT * FROM posts LIMIT 10 OFFSET 20`). It is simple to implement and allows jumping to specific page numbers, but degrades in performance on large datasets because the database must scan and discard all preceding offset rows. It also suffers from duplicate or missing items if new items are inserted between page queries. Cursor-based pagination uses an indexed pointer (such as `_id` or timestamp: `WHERE _id < cursor LIMIT 10`). It maintains O(1) indexed lookup performance at infinite depth and avoids duplicate items in real-time feeds.",
+    keywords: ["pagination", "offset pagination", "cursor-based pagination", "skip", "limit", "performance", "infinite scroll", "index", "feed"],
+    tips: "Contrast SKIP/LIMIT performance degradation with Cursor index lookups, especially for infinite scroll.",
+    timeLimitSeconds: 150,
+    maxScore: 10
+  },
+  {
+    questionText: "What are Optimistic UI updates versus Pessimistic UI updates? How do you handle rollbacks on network failure?",
+    category: "Full Stack",
+    difficulty: "Intermediate",
+    idealAnswer: "Pessimistic UI waits for the backend API response before updating the user interface, showing a spinner during the delay. Optimistic UI immediately updates the UI assuming the request will succeed (e.g. instant 'Like' button count increase), creating a fast and responsive feel. If the server request fails, the application must perform a rollback: capturing previous state snapshot in local state or React Query cache, restoring it upon error, and showing a toast notification explaining the failure.",
+    keywords: ["optimistic ui", "pessimistic ui", "rollback", "state snapshot", "react query", "tanstack query", "user experience", "error recovery"],
+    tips: "Explain snapshotting state prior to optimistic update and restoring on catch block.",
+    timeLimitSeconds: 150,
+    maxScore: 10
+  },
+  {
+    questionText: "Explain how to architect a complete full-stack session lifecycle with Access Tokens and Refresh Tokens.",
+    category: "Full Stack",
+    difficulty: "Intermediate",
+    idealAnswer: "To balance security and user experience: 1) Short-lived Access Token (15 mins) stored in memory or httpOnly cookie, used to authorize API calls. 2) Long-lived Refresh Token (7 days) stored in a secure httpOnly cookie with path='/api/auth/refresh'. 3) When an API call returns 401 Token Expired, client Axios interceptor pauses queued requests, calls the refresh endpoint with the refresh token, retrieves a fresh access token, and retries the original request seamlessly. 4) If refresh fails or user logs out, clear cookies and redirect to login.",
+    keywords: ["access token", "refresh token", "session lifecycle", "httponly cookie", "axios interceptor", "silent refresh", "token expiration", "security", "jwt"],
+    tips: "Explain short-lived access token + long-lived refresh token in httpOnly cookie and interceptor retry logic.",
+    timeLimitSeconds: 150,
+    maxScore: 10
+  },
+
+  // --- Hard Level ---
+  {
     questionText: "Design a URL shortening service (like Bitly) handling 100M new URLs per month. Outline schema, hash generation, and caching strategy.",
     category: "Full Stack",
     difficulty: "Hard",
@@ -165,15 +458,155 @@ export const defaultQuestions = [
     maxScore: 10
   },
   {
-    questionText: "Explain how MongoDB handles ACID transactions across multiple documents and replica sets, and what consensus protocol is used.",
-    category: "Database & SQL",
+    questionText: "How would you design a real-time collaborative document editor (like Google Docs or Figma)? Contrast Operational Transformation (OT) with CRDTs.",
+    category: "Full Stack",
     difficulty: "Hard",
-    idealAnswer: "MongoDB supports multi-document distributed ACID transactions using sessions (`client.startSession()`). It leverages WiredTiger storage engine's snapshot isolation and multi-version concurrency control (MVCC). Replica sets elect primaries using the Raft-based election protocol. Transactions require a majority write concern (`w: 'majority'`) and read concern (`readConcern: 'snapshot'`) to guarantee consistency and durability across failovers without dirty reads.",
-    keywords: ["acid", "transactions", "replica set", "raft", "snapshot isolation", "wiredtiger", "mvcc", "write concern", "read concern", "sessions"],
-    tips: "Mention startSession(), WiredTiger snapshot isolation, and readConcern snapshot.",
+    idealAnswer: "Real-time collaborative editing requires synchronizing concurrent document edits across distributed users without conflicts. 1) Operational Transformation (OT) relies on a centralized server that orders operations and transforms concurrent character insertions/deletions based on previous states (used historically by Google Docs). 2) Conflict-free Replicated Data Types (CRDTs) use mathematically provable commutative data structures (like Yjs or Automerge) where operations can be applied in any order without a centralized coordinator, making it superior for peer-to-peer and offline-first applications. Communication uses WebSockets with binary protocols.",
+    keywords: ["collaborative editor", "operational transformation", "ot", "crdt", "conflict-free replicated data types", "websockets", "yjs", "concurrency", "distributed state"],
+    tips: "Contrast centralized coordinator in OT vs commutative distributed structures in CRDTs.",
     timeLimitSeconds: 180,
     maxScore: 10
   },
+  {
+    questionText: "How would you architect a fault-tolerant Webhook delivery system capable of sending millions of events with idempotency and retry guarantees?",
+    category: "Full Stack",
+    difficulty: "Hard",
+    idealAnswer: "1) Event ingestion: producer services publish events to a distributed message queue (RabbitMQ/Kafka). 2) Worker pool: consumes events and makes HTTP POST requests to customer webhook endpoints. 3) Security: sign payload with HMAC-SHA256 signature using a shared secret and send in headers (e.g. X-Webhook-Signature) so customer can verify authenticity. 4) Reliability: if destination returns non-2xx or times out, retry with exponential backoff and jitter across 5-7 attempts. 5) Dead Letter Queue (DLQ): route un-deliverable webhooks to DLQ for manual inspection. 6) Idempotency: include unique `idempotency-key` in header so receivers avoid duplicate processing.",
+    keywords: ["webhook", "idempotency", "exponential backoff", "hmac", "signature", "dead letter queue", "retry", "message queue", "fault tolerant", "jitter"],
+    tips: "Cover HMAC signatures, exponential backoff retries, Dead Letter Queue, and idempotency keys.",
+    timeLimitSeconds: 180,
+    maxScore: 10
+  },
+  {
+    questionText: "Explain CI/CD pipelines, Blue-Green deployments, and how to execute database schema migrations with zero downtime.",
+    category: "Full Stack",
+    difficulty: "Hard",
+    idealAnswer: "Zero-downtime deployment ensures the application remains online during updates. Blue-Green deployment maintains two identical production environments: Blue (active live traffic) and Green (new release). The new release is tested on Green, then the router/load balancer instantly flips traffic from Blue to Green. For database migrations, follow the Expand and Contract pattern: 1) Expand: add new column/field as optional while keeping old column. 2) Deploy app version that writes to both columns and reads from new. 3) Backfill historical data. 4) Contract: remove old column in a subsequent release. This ensures old and new versions run concurrently without schema breakage.",
+    keywords: ["zero downtime", "blue green deployment", "ci/cd", "schema migration", "expand and contract", "load balancer", "canary release", "backfill", "database"],
+    tips: "Explain Blue-Green traffic switching and the Expand & Contract migration pattern.",
+    timeLimitSeconds: 180,
+    maxScore: 10
+  },
+  {
+    questionText: "How do you implement Distributed Tracing and Centralized Logging in a microservice or high-scale full-stack architecture?",
+    category: "Full Stack",
+    difficulty: "Hard",
+    idealAnswer: "Distributed tracing tracks a single request as it traverses multiple services and databases. 1) Trace and Span IDs: API gateway generates a unique correlation ID (e.g. X-Request-ID / traceparent) and injects it into HTTP/gRPC headers. Every downstream service propagates this ID. 2) Structured logging: use Winston or Pino to log in JSON format including correlation ID, service name, timestamp, and log level. 3) Centralized collection: agents (Promtail, Fluentbit) ship logs to a centralized repository (OpenSearch, Elasticsearch, Grafana Loki). 4) Tracing visualization: OpenTelemetry instrumentation sends spans to Jaeger or Tempo to identify latency bottlenecks across services.",
+    keywords: ["distributed tracing", "centralized logging", "opentelemetry", "correlation id", "x-request-id", "winston", "jaeger", "elasticsearch", "loki", "spans"],
+    tips: "Explain correlation IDs propagated via headers, structured JSON logging, and OpenTelemetry/Jaeger.",
+    timeLimitSeconds: 180,
+    maxScore: 10
+  },
+
+
+  // ==========================================
+  // 4. DATA STRUCTURES
+  // ==========================================
+  // --- Simple Level ---
+  {
+    questionText: "What is an Array and how does its memory allocation differ from a Linked List?",
+    category: "Data Structures",
+    difficulty: "Simple",
+    idealAnswer: "An Array stores elements in contiguous memory locations, allowing O(1) random access by index, but resizing and insertions/deletions take O(N). A Linked List consists of nodes where each node holds data and a pointer to the next node; nodes are stored non-contiguously, so indexing takes O(N), but insertion/deletion at a known pointer is O(1).",
+    keywords: ["array", "linked list", "contiguous", "memory", "o(1)", "o(n)", "pointer", "node", "random access", "insertion"],
+    tips: "Highlight random access index lookup O(1) vs traversal O(N) and memory locality.",
+    timeLimitSeconds: 120,
+    maxScore: 10
+  },
+  {
+    questionText: "Explain Stack and Queue data structures. What are LIFO and FIFO principles, and what are their practical applications?",
+    category: "Data Structures",
+    difficulty: "Simple",
+    idealAnswer: "A Stack is a Last-In, First-Out (LIFO) linear data structure where elements are added and removed from the same end (top). Core operations are push and pop, both O(1). Applications: function call stack, undo/redo mechanisms, and bracket balancing. A Queue is a First-In, First-Out (FIFO) linear data structure where elements are inserted at the rear (enqueue) and removed from the front (dequeue), both O(1). Applications: printer task scheduling, message queues, and BFS graph traversal.",
+    keywords: ["stack", "queue", "lifo", "fifo", "push", "pop", "enqueue", "dequeue", "call stack", "scheduling", "o(1)"],
+    tips: "State LIFO vs FIFO clearly and provide at least two real software engineering use-cases for each.",
+    timeLimitSeconds: 120,
+    maxScore: 10
+  },
+  {
+    questionText: "How does the Two-Pointer technique work? How would you use it to check if a string is a palindrome in O(1) space?",
+    category: "Data Structures",
+    difficulty: "Simple",
+    idealAnswer: "The Two-Pointer technique uses two indices to traverse a data structure simultaneously, often from opposite ends moving towards the center, or at different speeds. To check if a string is a palindrome in O(N) time and O(1) auxiliary space: initialize 'left' at 0 and 'right' at string length - 1. While left < right, compare characters at both pointers (ignoring non-alphanumeric and case). If characters differ, return false; otherwise increment left and decrement right. If pointers meet, the string is a palindrome.",
+    keywords: ["two-pointer", "palindrome", "left pointer", "right pointer", "o(1) space", "o(n) time", "string manipulation", "in-place", "indices"],
+    tips: "Walk through left/right pointer convergence and confirm O(1) auxiliary space.",
+    timeLimitSeconds: 120,
+    maxScore: 10
+  },
+  {
+    questionText: "Explain the Binary Search algorithm, its prerequisites, and why its time complexity is O(log N).",
+    category: "Data Structures",
+    difficulty: "Simple",
+    idealAnswer: "Binary Search is a divide-and-conquer search algorithm that works strictly on a SORTED array. It maintains left and right boundaries and calculates the midpoint: `mid = left + Math.floor((right - left) / 2)` (which avoids integer overflow). It compares target with array[mid]. If equal, target is found. If target is smaller, search continues in left half (`right = mid - 1`); if larger, search continues in right half (`left = mid + 1`). Because the search space is halved in every iteration, the maximum number of steps is log2(N), giving O(log N) time complexity.",
+    keywords: ["binary search", "sorted array", "o(log n)", "divide and conquer", "midpoint", "integer overflow", "halving", "search space"],
+    tips: "Emphasize that the array must be sorted, explain integer overflow prevention, and halving the search space.",
+    timeLimitSeconds: 120,
+    maxScore: 10
+  },
+  {
+    questionText: "Compare Linear Search and Binary Search in terms of prerequisites, execution steps, and Big-O complexity.",
+    category: "Data Structures",
+    difficulty: "Simple",
+    idealAnswer: "Linear Search iterates through each element sequentially from index 0 to N-1 until target is found or array ends. It requires no sorting (works on unsorted data) and has best-case O(1) and worst/average case O(N) time complexity with O(1) space. Binary Search requires data to be sorted in advance. It repeatedly divides search space in half, achieving O(log N) worst and average case time complexity with O(1) space. For large collections, Binary Search is exponentially faster (e.g. 20 comparisons vs 1,000,000 for N=1M).",
+    keywords: ["linear search", "binary search", "big-o", "o(n)", "o(log n)", "sorted", "unsorted", "sequential", "comparisons"],
+    tips: "Compare best/worst cases and explain the trade-off of sorting cost vs search frequency.",
+    timeLimitSeconds: 120,
+    maxScore: 10
+  },
+
+  // --- Intermediate Level ---
+  {
+    questionText: "How does a Hash Table achieve O(1) average time complexity? How are collisions handled?",
+    category: "Data Structures",
+    difficulty: "Intermediate",
+    idealAnswer: "A Hash Table uses a hash function to map keys to bucket indices in an array, enabling average O(1) lookups, insertions, and deletions. When different keys generate the same hash (collision), it can be resolved using Separate Chaining (linked lists or balanced trees at each bucket) or Open Addressing (Linear Probing, Quadratic Probing, Double Hashing). If the load factor becomes too high, rehashing is triggered.",
+    keywords: ["hash table", "hash function", "collision", "o(1)", "separate chaining", "open addressing", "linear probing", "load factor", "rehashing"],
+    tips: "Explain how load factor affects degradation to O(N) and compare Chaining vs Open Addressing.",
+    timeLimitSeconds: 150,
+    maxScore: 10
+  },
+  {
+    questionText: "Explain the properties of a Binary Search Tree (BST) and describe the three depth-first tree traversal orders.",
+    category: "Data Structures",
+    difficulty: "Intermediate",
+    idealAnswer: "In a Binary Search Tree (BST), for every node, all values in its left subtree are strictly less than node's value, and all values in right subtree are strictly greater. Traversals: 1) In-Order (Left, Root, Right): visits nodes in ascending sorted order. 2) Pre-Order (Root, Left, Right): useful for cloning/serializing trees. 3) Post-Order (Left, Right, Root): useful for deleting trees or calculating directory sizes (evaluating children before parent). Operations take average O(log N) time, but can degrade to O(N) if tree becomes unbalanced (skewed).",
+    keywords: ["binary search tree", "bst", "in-order", "pre-order", "post-order", "sorted order", "traversal", "subtree", "o(log n)", "balanced"],
+    tips: "Highlight that In-Order traversal yields sorted values and compare the 3 traversal orders.",
+    timeLimitSeconds: 150,
+    maxScore: 10
+  },
+  {
+    questionText: "Compare Breadth-First Search (BFS) and Depth-First Search (DFS) in Graphs. When would you use each?",
+    category: "Data Structures",
+    difficulty: "Intermediate",
+    idealAnswer: "BFS explores graph level-by-level using a Queue (FIFO). It visits all neighbor nodes at distance d before moving to d+1, making it ideal for finding the shortest path in unweighted graphs. DFS explores as deep as possible along each branch before backtracking, implemented using recursion or an explicit Stack (LIFO). It is ideal for detecting cycles, topological sorting, finding connected components, and solving maze puzzles. Both have O(V + E) time complexity.",
+    keywords: ["bfs", "dfs", "breadth-first search", "depth-first search", "queue", "stack", "shortest path", "unweighted graph", "cycle detection", "topological sort"],
+    tips: "State Queue for BFS (shortest path) vs Stack/Recursion for DFS (cycle detection, pathfinding).",
+    timeLimitSeconds: 150,
+    maxScore: 10
+  },
+  {
+    questionText: "Explain QuickSort versus MergeSort. Analyze their time complexities, space complexities, and stability.",
+    category: "Data Structures",
+    difficulty: "Intermediate",
+    idealAnswer: "MergeSort is a divide-and-conquer algorithm that recursively splits the array into two halves, sorts them, and merges the sorted halves. It is a stable sort with guaranteed O(N log N) time in all cases (best, average, worst), but requires O(N) auxiliary space. QuickSort selects a pivot and partitions elements so smaller elements are to the left and larger to the right. It is unstable, but sorts in-place with O(log N) auxiliary space (recursion stack) and average O(N log N) time. However, worst-case time is O(N^2) if pivot selection is poor (e.g. already sorted array with first element as pivot).",
+    keywords: ["quicksort", "mergesort", "divide and conquer", "pivot", "partition", "stable sort", "o(n log n)", "o(n^2)", "auxiliary space", "in-place"],
+    tips: "Contrast MergeSort guaranteed O(N log N) + O(N) space vs QuickSort in-place average O(N log N) with O(N^2) worst case.",
+    timeLimitSeconds: 150,
+    maxScore: 10
+  },
+  {
+    questionText: "What is a Binary Heap / Priority Queue? Explain Min-Heap versus Max-Heap properties and operations.",
+    category: "Data Structures",
+    difficulty: "Intermediate",
+    idealAnswer: "A Binary Heap is a complete binary tree stored compactly as an array (where node at index i has children at 2i+1 and 2i+2). In a Min-Heap, the root is the minimum element, and every parent is less than or equal to its children. In a Max-Heap, the root is the maximum. Key operations: `insert` appends to end and bubbles up (sift-up) in O(log N); `extract-min/max` removes root, replaces with last element, and bubbles down (sift-down / heapify) in O(log N); `peek` returns root in O(1). Used in Dijkstra's algorithm and priority scheduling.",
+    keywords: ["binary heap", "priority queue", "min-heap", "max-heap", "heapify", "sift up", "sift down", "o(log n)", "complete binary tree", "array representation"],
+    tips: "Explain array index mapping (2i+1, 2i+2) and the O(log N) sift-up/sift-down operations.",
+    timeLimitSeconds: 150,
+    maxScore: 10
+  },
+
+  // --- Hard Level ---
   {
     questionText: "How would you detect and find the start node of a cycle in a singly linked list? Prove the time and space complexity.",
     category: "Data Structures",
@@ -185,12 +618,362 @@ export const defaultQuestions = [
     maxScore: 10
   },
   {
+    questionText: "Design and implement an LRU (Least Recently Used) Cache with O(1) get and put time complexity.",
+    category: "Data Structures",
+    difficulty: "Hard",
+    idealAnswer: "An LRU Cache requires O(1) lookups and O(1) updates to element recency. To achieve this, combine two data structures: 1) A Hash Map mapping keys to Doubly Linked List node pointers for O(1) lookup. 2) A Doubly Linked List maintaining access order with pseudo head and tail nodes. On `get(key)`: lookup node in map; if exists, move node to head (most recently used) and return value. On `put(key, value)`: if key exists, update value and move to head; if new key, insert node at head and map it. If capacity exceeded, remove node from tail (least recently used) and delete from map. All operations are strictly O(1).",
+    keywords: ["lru cache", "least recently used", "doubly linked list", "hash map", "o(1)", "pseudo head", "pseudo tail", "capacity", "eviction"],
+    tips: "Explain why Doubly Linked List is needed (O(1) node deletion) alongside Hash Map.",
+    timeLimitSeconds: 180,
+    maxScore: 10
+  },
+  {
+    questionText: "Explain Dynamic Programming: Top-Down (Memoization) versus Bottom-Up (Tabulation). Walk through the 0/1 Knapsack Problem.",
+    category: "Data Structures",
+    difficulty: "Hard",
+    idealAnswer: "Dynamic Programming solves optimization problems by breaking them into overlapping subproblems with optimal substructure. Top-Down (Memoization) uses recursion with a cache/memo table to store subproblem results so each subproblem is solved once. Bottom-Up (Tabulation) builds a DP table iteratively starting from base cases, eliminating recursion stack overhead. In 0/1 Knapsack (capacity W, N items with weights and values): `dp[i][w]` stores max value using first i items within weight w. For each item, choice is: don't take (`dp[i-1][w]`) or take (`dp[i-1][w-weight[i]] + value[i]`). Time complexity is O(N * W), pseudo-polynomial.",
+    keywords: ["dynamic programming", "memoization", "tabulation", "overlapping subproblems", "optimal substructure", "0/1 knapsack", "dp table", "pseudo-polynomial"],
+    tips: "Contrast top-down recursion vs bottom-up iteration and state the recurrence relation for knapsack.",
+    timeLimitSeconds: 180,
+    maxScore: 10
+  },
+  {
+    questionText: "How does Dijkstra's Algorithm find the shortest path in a weighted graph? Why does it fail on negative edge weights?",
+    category: "Data Structures",
+    difficulty: "Hard",
+    idealAnswer: "Dijkstra's Algorithm finds the shortest path from a starting node to all other nodes in a graph with non-negative edge weights. It maintains a distance array initialized to infinity (0 for start) and a Min-Heap priority queue of (distance, node) pairs. At each step, it extracts the node u with minimum distance, explores all outgoing edges (u, v, weight), and performs relaxation: if `dist[u] + weight < dist[v]`, it updates `dist[v]` and pushes to heap. With a min-heap, time complexity is O((V + E) log V). It fails on negative edge weights because it greedily marks visited nodes as finalized; a negative edge discovered later could produce a shorter path, violating the greedy assumption. Bellman-Ford must be used instead for negative weights.",
+    keywords: ["dijkstra's algorithm", "shortest path", "min-heap", "priority queue", "relaxation", "negative edge weights", "greedy", "bellman-ford", "o((v+e) log v)"],
+    tips: "Explain edge relaxation and why greedy finalization fails with negative weight cycles.",
+    timeLimitSeconds: 180,
+    maxScore: 10
+  },
+  {
+    questionText: "Explain the Trie (Prefix Tree) data structure. How does it achieve O(L) autocomplete and search operations?",
+    category: "Data Structures",
+    difficulty: "Hard",
+    idealAnswer: "A Trie is a tree-like data structure used for storing strings where each node represents a character. A node contains an array or map of children (e.g. 26 pointers for lowercase English letters) and a boolean `isEndOfWord`. Inserting and searching a word of length L takes O(L) time, completely independent of the total number of words N in the dictionary. To implement autocomplete for a prefix P: traverse down to node matching P (in O(length(P))), then perform DFS/BFS from that node to collect all reachable complete words. Tries provide faster prefix lookups than hash tables because hash tables cannot perform prefix matching without scanning all keys.",
+    keywords: ["trie", "prefix tree", "autocomplete", "isendofword", "o(l)", "prefix search", "children array", "lexicographical", "dictionary"],
+    tips: "Explain node structure (children map/array + isEndOfWord) and how prefix traversal enables autocomplete.",
+    timeLimitSeconds: 180,
+    maxScore: 10
+  },
+
+
+  // ==========================================
+  // 5. DATABASE & SQL
+  // ==========================================
+  // --- Simple Level ---
+  {
+    questionText: "What is MongoDB and how does a document database differ from a relational database?",
+    category: "Database & SQL",
+    difficulty: "Simple",
+    idealAnswer: "MongoDB is a NoSQL document-oriented database that stores data in JSON-like BSON documents with dynamic schemas. Unlike relational databases which use tables, rows, columns, and rigid schemas with foreign keys, MongoDB groups documents into collections, allowing nested structures, horizontal scalability, and flexible schemas.",
+    keywords: ["nosql", "document", "bson", "json", "collection", "schema", "flexible", "relational", "tables", "scaling"],
+    tips: "Contrast collections vs tables, documents vs rows, and schema flexibility.",
+    timeLimitSeconds: 120,
+    maxScore: 10
+  },
+  {
+    questionText: "Explain Primary Keys and Foreign Keys in relational databases. How is a primary key represented in MongoDB?",
+    category: "Database & SQL",
+    difficulty: "Simple",
+    idealAnswer: "In relational databases, a Primary Key is a column (or set of columns) that uniquely identifies each row in a table; it cannot contain NULL values. A Foreign Key is a column that references the primary key of another table, enforcing referential integrity. In MongoDB, every document is automatically assigned an immutable unique primary identifier in the `_id` field. By default, it is a 12-byte BSON ObjectId containing a 4-byte timestamp, 5-byte random value, and 3-byte incrementing counter.",
+    keywords: ["primary key", "foreign key", "referential integrity", "unique identifier", "mongodb", "_id", "objectid", "bson", "relational"],
+    tips: "Define Primary and Foreign keys and detail the components of MongoDB's ObjectId.",
+    timeLimitSeconds: 120,
+    maxScore: 10
+  },
+  {
+    questionText: "What is Database Normalization? Explain First, Second, and Third Normal Forms (1NF, 2NF, 3NF).",
+    category: "Database & SQL",
+    difficulty: "Simple",
+    idealAnswer: "Normalization is the process of organizing relational database schema to minimize data redundancy and eliminate insert, update, and delete anomalies. 1NF (First Normal Form): each column must contain atomic (indivisible) values and each row must be unique. 2NF (Second Normal Form): satisfies 1NF and removes partial dependencies (non-key columns must depend on the whole primary key, not a part of a composite key). 3NF (Third Normal Form): satisfies 2NF and removes transitive dependencies (non-key columns must not depend on other non-key columns).",
+    keywords: ["normalization", "1nf", "2nf", "3nf", "atomic", "redundancy", "anomalies", "partial dependency", "transitive dependency", "relational"],
+    tips: "Define atomic values for 1NF, no partial dependency for 2NF, and no transitive dependency for 3NF.",
+    timeLimitSeconds: 120,
+    maxScore: 10
+  },
+  {
+    questionText: "Explain standard SQL CRUD queries: SELECT, INSERT, UPDATE, and DELETE with filtering and sorting.",
+    category: "Database & SQL",
+    difficulty: "Simple",
+    idealAnswer: "SQL CRUD operations manipulate relational tables: 1) Create: `INSERT INTO users (name, email) VALUES ('Alice', 'alice@example.com');`. 2) Read: `SELECT name, email FROM users WHERE status = 'active' ORDER BY created_at DESC LIMIT 10;`. 3) Update: `UPDATE users SET status = 'inactive' WHERE last_login < '2025-01-01';`. 4) Delete: `DELETE FROM users WHERE id = 5;`. Always use parameterized queries / prepared statements with WHERE clauses to prevent SQL injection and accidental table-wide updates.",
+    keywords: ["sql", "crud", "select", "insert into", "update", "delete", "where clause", "order by", "limit", "prepared statements", "sql injection"],
+    tips: "Provide syntax for each operation and emphasize using WHERE clauses and prepared statements.",
+    timeLimitSeconds: 120,
+    maxScore: 10
+  },
+  {
+    questionText: "Explain MongoDB CRUD methods and query operators ($gt, $lt, $in, $set, $push).",
+    category: "Database & SQL",
+    difficulty: "Simple",
+    idealAnswer: "MongoDB CRUD operations interact with collections: 1) Create: `db.users.insertOne({ name: 'Bob', age: 25 })` or `insertMany()`. 2) Read: `db.users.find({ age: { $gt: 18, $lt: 65 }, status: { $in: ['active', 'pending'] } })`. 3) Update: `db.users.updateOne({ _id: id }, { $set: { status: 'verified' }, $push: { tags: 'candidate' } })`. 4) Delete: `db.users.deleteOne({ _id: id })`. Operators like `$gt` (greater than), `$in` (value in array), `$set` (update field), and `$push` (append to array) provide expressive data manipulation.",
+    keywords: ["mongodb", "crud", "find", "insertone", "updateone", "deleteone", "$gt", "$lt", "$in", "$set", "$push", "query operators"],
+    tips: "List read operators ($gt, $in) and update operators ($set, $push) with syntax examples.",
+    timeLimitSeconds: 120,
+    maxScore: 10
+  },
+
+  // --- Intermediate Level ---
+  {
+    questionText: "Explain indexing in MongoDB. How do compound indexes and execution plans (explain()) optimize query performance?",
+    category: "Database & SQL",
+    difficulty: "Intermediate",
+    idealAnswer: "Indexes in MongoDB use B-trees to locate documents quickly without scanning every document in a collection (COLLSCAN vs IXSCAN). A compound index indexes multiple fields, following the Equality-Sort-Range (ESR) rule. The explain('executionStats') method allows analyzing queries to inspect execution time, totalDocsExamined, and index usage to ensure queries avoid full table scans.",
+    keywords: ["index", "b-tree", "collscan", "ixscan", "compound index", "explain", "executionstats", "performance", "esr rule"],
+    tips: "Mention COLLSCAN vs IXSCAN and the ESR (Equality, Sort, Range) rule.",
+    timeLimitSeconds: 150,
+    maxScore: 10
+  },
+  {
+    questionText: "Explain SQL JOIN operations: INNER JOIN, LEFT JOIN, RIGHT JOIN, and FULL OUTER JOIN.",
+    category: "Database & SQL",
+    difficulty: "Intermediate",
+    idealAnswer: "SQL JOINs combine rows from two or more tables based on a related column: 1) INNER JOIN returns only rows that have matching values in both tables. 2) LEFT (OUTER) JOIN returns all rows from the left table and matched rows from the right table (unmatched right columns return NULL). 3) RIGHT (OUTER) JOIN returns all rows from the right table and matched rows from the left. 4) FULL (OUTER) JOIN returns all rows when there is a match in either left or right table, filling missing matches with NULLs.",
+    keywords: ["sql join", "inner join", "left join", "right join", "full outer join", "null", "matching rows", "foreign key", "relational"],
+    tips: "Describe which rows are included for each JOIN type and when NULLs are generated.",
+    timeLimitSeconds: 150,
+    maxScore: 10
+  },
+  {
+    questionText: "How does the MongoDB Aggregation Pipeline work? Detail $match, $group, $lookup, $project, and $unwind.",
+    category: "Database & SQL",
+    difficulty: "Intermediate",
+    idealAnswer: "The MongoDB Aggregation Framework processes documents through multi-stage pipelines where output of one stage becomes input to the next. 1) `$match`: filters documents matching criteria (acts like WHERE, should be first to use indexes). 2) `$group`: groups documents by a specified identifier key and computes accumulator metrics (like `$sum`, `$avg`). 3) `$lookup`: performs a left outer join to another collection in the same database. 4) `$project`: reshapes documents, including/excluding or computing new fields. 5) `$unwind`: deconstructs an array field from input documents to output a document for each element.",
+    keywords: ["aggregation pipeline", "$match", "$group", "$lookup", "$project", "$unwind", "mongodb", "accumulator", "multi-stage", "join"],
+    tips: "Explain data flow through stages and explain why $match should appear as early as possible.",
+    timeLimitSeconds: 150,
+    maxScore: 10
+  },
+  {
+    questionText: "When should you use Embedded Documents versus Referenced Documents in MongoDB schema design?",
+    category: "Database & SQL",
+    difficulty: "Intermediate",
+    idealAnswer: "MongoDB supports two primary data modeling approaches: 1) Embedding (Denormalization): storing related data inside the parent document (nested sub-documents or arrays). Best for 1-to-1 or bounded 1-to-few relationships where data is accessed together (e.g. user address, order items). It provides fast O(1) single-read performance, atomic updates, but documents must not exceed the 16MB BSON limit. 2) Referencing (Normalization): storing document IDs referencing another collection. Best for 1-to-many, unbounded relationships, or many-to-many relationships (e.g. users and posts, logs) where sub-data updates frequently independently.",
+    keywords: ["embedded documents", "referenced documents", "data modeling", "denormalization", "normalization", "16mb limit", "atomic", "1-to-many", "mongodb schema"],
+    tips: "Discuss 16MB document size limit, bounded vs unbounded arrays, and read performance.",
+    timeLimitSeconds: 150,
+    maxScore: 10
+  },
+  {
+    questionText: "Explain Database Concurrency Control: Optimistic Concurrency Control versus Pessimistic Locking.",
+    category: "Database & SQL",
+    difficulty: "Intermediate",
+    idealAnswer: "Concurrency control prevents data corruption when multiple transactions access the same record simultaneously (e.g. two users booking the last seat). Pessimistic Locking assumes conflicts will occur and places exclusive database locks on rows/records (e.g. `SELECT FOR UPDATE`) until the transaction commits, blocking concurrent readers/writers (can cause deadlocks and high latency). Optimistic Concurrency Control (OCC) assumes conflicts are rare; it reads data with a version number (`__v`) or timestamp, and when updating, checks `WHERE id = targetId AND version = readVersion`. If version changed, update fails and application retries.",
+    keywords: ["concurrency control", "optimistic concurrency control", "pessimistic locking", "select for update", "versioning", "deadlock", "race condition", "transactions", "acid"],
+    tips: "Contrast locking rows (pessimistic) vs version number checking (optimistic) and when to use each.",
+    timeLimitSeconds: 150,
+    maxScore: 10
+  },
+
+  // --- Hard Level ---
+  {
+    questionText: "Explain how MongoDB handles ACID transactions across multiple documents and replica sets, and what consensus protocol is used.",
+    category: "Database & SQL",
+    difficulty: "Hard",
+    idealAnswer: "MongoDB supports multi-document distributed ACID transactions using sessions (`client.startSession()`). It leverages WiredTiger storage engine's snapshot isolation and multi-version concurrency control (MVCC). Replica sets elect primaries using the Raft-based election protocol. Transactions require a majority write concern (`w: 'majority'`) and read concern (`readConcern: 'snapshot'`) to guarantee consistency and durability across failovers without dirty reads.",
+    keywords: ["acid", "transactions", "replica set", "raft", "snapshot isolation", "wiredtiger", "mvcc", "write concern", "read concern", "sessions"],
+    tips: "Mention startSession(), WiredTiger snapshot isolation, and readConcern snapshot.",
+    timeLimitSeconds: 180,
+    maxScore: 10
+  },
+  {
+    questionText: "Explain Database Sharding and Horizontal Partitioning. How do you select a good Shard Key to avoid chunk hotspots?",
+    category: "Database & SQL",
+    difficulty: "Hard",
+    idealAnswer: "Sharding distributes data across multiple independent database servers (shards) to support horizontal scaling beyond hardware limits of a single machine. In MongoDB, a cluster consists of Shards, Config Servers (storing metadata and routing info), and Mongos query routers. Choosing an optimal Shard Key is critical: 1) High cardinality: ensures data can be split into many distinct chunks. 2) Low frequency: prevents all writes from targeting a single key value. 3) Non-monotonically increasing: avoiding auto-increment IDs or timestamps which route all new writes to the maximum shard (hotspot). Ideal shard keys often use compound keys (e.g. { customer_id: 1, created_at: 1 }) or hashed shard keys.",
+    keywords: ["sharding", "horizontal partitioning", "shard key", "mongos", "config server", "hotspot", "cardinality", "chunk", "hashed sharding", "horizontal scaling"],
+    tips: "Define Mongos router, chunk balancing, and why monotonic keys create write hotspots.",
+    timeLimitSeconds: 180,
+    maxScore: 10
+  },
+  {
+    questionText: "Explain the CAP Theorem and PACELC Theorem in the context of distributed databases.",
+    category: "Database & SQL",
+    difficulty: "Hard",
+    idealAnswer: "The CAP Theorem states that a distributed data system can guarantee at most two out of three properties during a network partition: Consistency (all nodes see latest write), Availability (every request receives a response), and Partition Tolerance (system functions despite dropped network messages). Because network partitions are inevitable in distributed systems, databases choose CP (e.g. MongoDB primary-only writes) or AP (e.g. Cassandra, DynamoDB). The PACELC Theorem extends CAP: If there is a Partition (P), trade Availability (A) versus Consistency (C); Else (E), trade Latency (L) versus Consistency (C) in normal operations.",
+    keywords: ["cap theorem", "pacelc theorem", "consistency", "availability", "partition tolerance", "distributed systems", "cassandra", "latency", "network partition", "trade-offs"],
+    tips: "State CAP triangle (CP vs AP) and explain PACELC extension for normal operating latency.",
+    timeLimitSeconds: 180,
+    maxScore: 10
+  },
+  {
+    questionText: "How do you detect, analyze, and optimize slow queries in MongoDB and relational SQL databases? Address the N+1 query problem.",
+    category: "Database & SQL",
+    difficulty: "Hard",
+    idealAnswer: "1) Detection: enable MongoDB Database Profiler (`db.setProfilingLevel(1, { slowms: 100 })`) or PostgreSQL slow query log / pg_stat_statements. 2) Analysis: examine execution plan via `explain('executionStats')` or `EXPLAIN ANALYZE`; look for COLLSCAN / Seq Scan (full table scans), high ratio of totalDocsExamined to nReturned, and missing indexes. 3) Remediation: create covered indexes where all returned fields are indexed, avoiding document fetches entirely. 4) N+1 Problem: occurs when an application executes 1 query to fetch parents and N subsequent queries to fetch children of each parent. Solved in SQL using JOINs and in Mongoose using `.populate()` with batched `$in` queries or dataloader pattern.",
+    keywords: ["slow query", "profiler", "explain analyze", "executionstats", "collscan", "seq scan", "covered index", "n+1 problem", "populate", "dataloader"],
+    tips: "Explain COLLSCAN vs IXSCAN in explain(), covered queries, and batching to solve N+1.",
+    timeLimitSeconds: 180,
+    maxScore: 10
+  },
+  {
+    questionText: "Explain CQRS (Command Query Responsibility Segregation) and Event Sourcing with Polyglot Persistence.",
+    category: "Database & SQL",
+    difficulty: "Hard",
+    idealAnswer: "CQRS separates read and write operations into distinct data models: Commands (writes/updates) handle business logic and validation on a normalized, ACID database (e.g. PostgreSQL), while Queries (reads) read from a denormalized, read-optimized store (e.g. MongoDB or Elasticsearch for full-text search). Event Sourcing stores the state of a system as an immutable sequence of events rather than current state values. Current state is reconstructed by replaying events. Changes are propagated to the read model asynchronously via message queues (Kafka), achieving eventual consistency and massive horizontal read throughput.",
+    keywords: ["cqrs", "command query responsibility segregation", "event sourcing", "polyglot persistence", "eventual consistency", "elasticsearch", "immutable events", "kafka", "read model", "write model"],
+    tips: "Contrast command model vs read model, and explain how event sourcing maintains an immutable audit log.",
+    timeLimitSeconds: 180,
+    maxScore: 10
+  },
+
+
+  // ==========================================
+  // 6. HR & BEHAVIORAL
+  // ==========================================
+  // --- Simple Level ---
+  {
+    questionText: "Tell me about yourself, your technical background, and what drives your passion for software development.",
+    category: "HR & Behavioral",
+    difficulty: "Simple",
+    idealAnswer: "A strong response follows the Present-Past-Future structure: Present: current education, tech stack (e.g. MERN stack, JavaScript), and recent projects built. Past: how interest in programming started, problem-solving passion. Future: why this interview role is the exciting next step to contribute and grow technically.",
+    keywords: ["background", "education", "mern", "projects", "problem solving", "passion", "career", "skills", "growth"],
+    tips: "Keep answer between 60-90 seconds, highlight concrete projects, and connect directly to engineering goals.",
+    timeLimitSeconds: 120,
+    maxScore: 10
+  },
+  {
+    questionText: "What are your greatest technical strengths, and what is an area for improvement you are actively working on?",
+    category: "HR & Behavioral",
+    difficulty: "Simple",
+    idealAnswer: "Structure strength with evidence: Highlight a core engineering strength (e.g. quick debugging, deep understanding of MERN stack architecture, or structured documentation) backed by a specific project example. For weakness: Choose a genuine, professional technical skill currently being developed (e.g. mastering Docker containerization or public speaking), explain what proactive steps you are taking (courses, hands-on labs), and measurable progress made.",
+    keywords: ["strengths", "weakness", "growth mindset", "continuous learning", "debugging", "mern stack", "proactive", "self-improvement"],
+    tips: "Pick a genuine weakness that isn't a red flag and demonstrate active steps you are taking to overcome it.",
+    timeLimitSeconds: 120,
+    maxScore: 10
+  },
+  {
+    questionText: "Why are you interested in joining our engineering team and working in this specific role?",
+    category: "HR & Behavioral",
+    difficulty: "Simple",
+    idealAnswer: "A compelling answer demonstrates company research, role alignment, and cultural contribution: 1) Company Mission: connect your personal passion to the company's product, tech challenges, or industry impact. 2) Technical Alignment: explain how your skillset (e.g. React, Node.js, API engineering) allows you to deliver immediate value to the team. 3) Professional Growth: explain how working with experienced seniors and challenging production systems will accelerate your engineering career.",
+    keywords: ["company research", "role alignment", "mission", "contribution", "skills", "engineering culture", "growth", "value"],
+    tips: "Connect specific company features or challenges to your engineering skills and career trajectory.",
+    timeLimitSeconds: 120,
+    maxScore: 10
+  },
+  {
+    questionText: "How do you manage your time and prioritize when handling multiple competing project deadlines?",
+    category: "HR & Behavioral",
+    difficulty: "Simple",
+    idealAnswer: "Use structured prioritization frameworks: 1) Eisenhower Matrix or Impact vs Effort matrix: categorize tasks into urgent/critical vs secondary. 2) Communication: proactively communicate with project leads or professors early if scope adjustments or blockers arise. 3) Time blocking: dedicate focused, distraction-free blocks for complex coding and debugging. 4) Deconstruction: break large features into small, testable milestones to ensure continuous progress.",
+    keywords: ["time management", "prioritization", "deadlines", "eisenhower matrix", "communication", "milestones", "blockers", "focus", "trade-offs"],
+    tips: "Mention proactive communication, breaking down tasks into milestones, and prioritization frameworks.",
+    timeLimitSeconds: 120,
+    maxScore: 10
+  },
+  {
+    questionText: "Describe your ideal engineering team culture and work environment.",
+    category: "HR & Behavioral",
+    difficulty: "Simple",
+    idealAnswer: "An ideal culture emphasizes psychological safety, continuous learning, and engineering excellence: 1) Psychological safety: where developers feel empowered to ask questions, admit mistakes, and propose innovative ideas without fear. 2) High code standards: rigorous, constructive peer code reviews, automated CI/CD testing, and clean architecture. 3) Transparent communication: cross-functional collaboration and clear ownership where everyone is aligned toward delivering real user value.",
+    keywords: ["team culture", "psychological safety", "code reviews", "collaboration", "engineering excellence", "communication", "ownership", "continuous learning"],
+    tips: "Emphasize psychological safety, collaborative code reviews, and high engineering standards.",
+    timeLimitSeconds: 120,
+    maxScore: 10
+  },
+
+  // --- Intermediate Level ---
+  {
+    questionText: "Describe a challenging bug or technical obstacle you encountered in a recent project. How did you diagnose and resolve it?",
+    category: "HR & Behavioral",
+    difficulty: "Intermediate",
+    idealAnswer: "A great answer uses the STAR technique: Situation: what project and environment. Task: what was failing or breaking. Action: methodical debugging steps (checking network logs, adding tests, inspecting call stacks, isolating state). Result: what was the fix, measurable outcome, and key technical lesson learned to prevent future occurrences.",
+    keywords: ["star method", "situation", "task", "action", "result", "debugging", "root cause", "resolution", "logs", "testing"],
+    tips: "Focus 70% of time on your specific Action and measurable Result rather than just describing the problem.",
+    timeLimitSeconds: 150,
+    maxScore: 10
+  },
+  {
+    questionText: "Tell me about a time you worked on a team project where a teammate was not contributing or missed a deadline. How did you handle it?",
+    category: "HR & Behavioral",
+    difficulty: "Intermediate",
+    idealAnswer: "Apply the STAR method: Situation: Describe the academic or hackathon group project, tech stack, and deliverable. Task: A teammate was falling behind or unresponsive on critical API modules. Action: Avoided passive aggression or immediate escalation; scheduled a private 1-on-1 check-in with empathy to understand their blockers. Discovered they struggled with async JavaScript concepts. Paired together for an afternoon to unblock them and redistributed smaller tasks with clear milestones. Result: The team delivered the full project on schedule, the teammate learned the concepts, and team morale stayed positive.",
+    keywords: ["star method", "teamwork", "conflict resolution", "empathy", "communication", "blockers", "collaboration", "milestones", "accountability"],
+    tips: "Demonstrate empathy and constructive problem-solving before escalating to management.",
+    timeLimitSeconds: 150,
+    maxScore: 10
+  },
+  {
+    questionText: "Describe a situation where you had to quickly learn a brand new programming language, framework, or tool to deliver a project.",
+    category: "HR & Behavioral",
+    difficulty: "Intermediate",
+    idealAnswer: "STAR framework: Situation: Building a project that required a technology not taught in coursework (e.g. TypeScript, Redis, or Docker). Task: Had to deliver a functioning prototype within two weeks. Action: Took a structured approach: read official documentation and core architecture guides rather than random tutorials; built a minimal throwaway prototype to test key APIs; followed community style guides; consulted official repositories for best practices. Result: Successfully integrated the technology, delivered ahead of schedule, and shared documentation with teammates.",
+    keywords: ["star method", "fast learner", "documentation", "prototype", "adaptability", "typescript", "best practices", "initiative", "delivery"],
+    tips: "Focus on your methodical learning strategy (documentation, throwaway prototypes) and the measurable outcome.",
+    timeLimitSeconds: 150,
+    maxScore: 10
+  },
+  {
+    questionText: "How do you handle constructive criticism and critical feedback on your code during peer code reviews?",
+    category: "HR & Behavioral",
+    difficulty: "Intermediate",
+    idealAnswer: "View code reviews as a learning accelerator and quality safeguard rather than personal criticism: 1) Mindset: separate self-worth from the code; appreciate that reviewers want to make the codebase robust. 2) Open dialogue: if feedback suggests a better design pattern or catches an edge case, thank the reviewer, ask clarifying questions to understand the architectural reasoning, and implement the change. 3) Objective evaluation: if there's a trade-off, share benchmarks or documentation respectfully to discuss the optimal approach collaboratively.",
+    keywords: ["code review", "constructive criticism", "feedback", "growth mindset", "collaboration", "clean code", "ego", "architecture", "best practices"],
+    tips: "Emphasize separating code from personal ego and treating reviews as mentorship opportunities.",
+    timeLimitSeconds: 150,
+    maxScore: 10
+  },
+  {
+    questionText: "Describe a mistake you made in a past project or assignment. How did you take ownership and fix the issue?",
+    category: "HR & Behavioral",
+    difficulty: "Intermediate",
+    idealAnswer: "STAR framework: Situation: While deploying a project update, introduced a bug (e.g. unhandled null pointer or broken database index) that caused intermittent 500 errors. Task: Acknowledge the issue immediately and prevent user disruption. Action: Took immediate ownership without blaming tools or teammates; rolled back the deployment to the last known stable state; wrote unit/integration tests that reproduced the exact edge case; applied the fix; and created a checklist to prevent recurrence in future deployments. Result: Restored stability within 15 minutes, added automated regression tests, and learned the value of robust pre-deployment verification.",
+    keywords: ["star method", "ownership", "accountability", "rollback", "regression tests", "root cause", "post-mortem", "integrity", "learning"],
+    tips: "Demonstrate taking immediate ownership, rapid containment/rollback, and institutionalizing prevention.",
+    timeLimitSeconds: 150,
+    maxScore: 10
+  },
+
+  // --- Hard Level ---
+  {
     questionText: "Tell me about a time you strongly disagreed with a senior engineer or team decision regarding technical architecture. How did you handle it?",
     category: "HR & Behavioral",
     difficulty: "Hard",
     idealAnswer: "Structure with professional maturity: 1) Context: explain the architectural difference (e.g., choice of framework, microservice vs monolith, database indexing). 2) Constructive Approach: gathered objective metrics, benchmarks, and prototype proof-of-concept rather than emotional argumentation. 3) Collaboration: scheduled a constructive design review to present trade-offs transparently. 4) Alignment: whether team adopted the proposal or alternative, committed 100% to team delivery (disagree and commit).",
     keywords: ["disagreement", "professionalism", "benchmarks", "prototype", "metrics", "trade-offs", "communication", "disagree and commit", "teamwork"],
     tips: "Show psychological safety, objective benchmark-driven decision making, and 'disagree and commit' mindset.",
+    timeLimitSeconds: 180,
+    maxScore: 10
+  },
+  {
+    questionText: "Tell me about a time you had to make a difficult technical trade-off between speed of delivery and code quality/scalability.",
+    category: "HR & Behavioral",
+    difficulty: "Hard",
+    idealAnswer: "STAR framework: Situation: Tight product launch deadline where building a fully decoupled microservice with distributed caching would delay launch by months. Task: Deliver MVP on time while avoiding unmanageable technical debt. Action: Proposed a modular monolith architecture with strict domain boundaries and clean interface abstractions. Implemented comprehensive unit tests and documented areas where scaling bottlenecks would emerge. Held an alignment meeting with stakeholders, classifying accepted shortcuts as conscious technical debt scheduled for sprint refactoring post-launch. Result: Shipped MVP on time, achieved product-market validation, and successfully refactored hot modules 3 months later without breaking changes.",
+    keywords: ["technical trade-offs", "mvp", "technical debt", "speed vs quality", "modular monolith", "refactoring", "stakeholder alignment", "pragmatism", "architecture"],
+    tips: "Show pragmatic engineering judgment: deliberate, documented technical debt with an explicit repayment plan.",
+    timeLimitSeconds: 180,
+    maxScore: 10
+  },
+  {
+    questionText: "Describe a situation where you took technical leadership or initiative to solve a systemic problem in your team or codebase.",
+    category: "HR & Behavioral",
+    difficulty: "Hard",
+    idealAnswer: "STAR framework: Situation: Observed that the team's onboarding process took over a week due to mismatched local environments, manual database seeding, and outdated readmes. Task: Take initiative to streamline onboarding and developer productivity without being asked. Action: Created Docker Compose configs bundling Node backend, MongoDB, and Redis; authored automated seed scripts; established pre-commit hooks (Husky, ESLint, Prettier); and wrote a comprehensive developer setup guide. Result: Slashed new developer onboarding time from 5 days to 30 minutes, eliminated 'works on my machine' bugs, and received team-wide adoption.",
+    keywords: ["technical leadership", "initiative", "developer experience", "docker compose", "automation", "onboarding", "husky", "productivity", "systemic improvement"],
+    tips: "Focus on identifying an unassigned friction point and driving an automated, lasting solution.",
+    timeLimitSeconds: 180,
+    maxScore: 10
+  },
+  {
+    questionText: "How do you explain complex technical concepts, architecture risks, or technical debt to non-technical stakeholders (e.g. product managers, clients)?",
+    category: "HR & Behavioral",
+    difficulty: "Hard",
+    idealAnswer: "1) Translate technical jargon into business impact: frame technical issues in terms of user experience, revenue risk, system uptime, and speed of future feature delivery rather than low-level code mechanics. 2) Use analogies: e.g. explain technical debt as financial debt—taking out a loan helps you buy a house now, but if you don't pay interest (refactoring), it compounds until you go bankrupt (code freeze). 3) Present concrete trade-offs and options: provide Option A (quick patch with estimated future delay) vs Option B (thorough architectural refactor with timeline and ROI) so stakeholders participate in decision-making.",
+    keywords: ["stakeholder communication", "business impact", "analogies", "technical debt", "roi", "trade-offs", "non-technical", "risk management", "collaboration"],
+    tips: "Explain using business metrics (latency, revenue, downtime) and vivid analogies like financial debt.",
+    timeLimitSeconds: 180,
+    maxScore: 10
+  },
+  {
+    questionText: "Tell me about a project that failed or did not meet expectations. What was your retrospective analysis and what did you change moving forward?",
+    category: "HR & Behavioral",
+    difficulty: "Hard",
+    idealAnswer: "STAR framework: Situation: Built a feature-heavy application that experienced very low user adoption after release. Task: Conduct an objective retrospective to understand why the project failed despite working code. Action: Analyzed user feedback and analytics; realized the team suffered from premature optimization and building in isolation without validating real user problems (solving imaginary problems). Did not defend the failure. Result: Embraced customer-centric development; instituted rapid feedback loops (user interviews, low-fidelity wireframes, analytics telemetry) in subsequent projects, leading to significantly higher engagement and utility.",
+    keywords: ["failure", "retrospective", "premature optimization", "user feedback", "lessons learned", "post-mortem", "customer centric", "analytics", "growth"],
+    tips: "Be honest about the root cause (e.g. premature optimization, lack of validation) and demonstrate permanent behavioral change.",
     timeLimitSeconds: 180,
     maxScore: 10
   }

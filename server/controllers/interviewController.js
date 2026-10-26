@@ -25,22 +25,17 @@ export const startInterview = async (req, res) => {
 
     let pool = await getQuestions(filter);
 
-    // If not enough questions in specific category, fall back to matching difficulty
-    if (pool.length < count && category !== 'All') {
-      const backupPool = await getQuestions({ difficulty: filter.difficulty });
-      const existingIds = new Set(pool.map(q => q._id.toString()));
-      for (const bq of backupPool) {
-        if (!existingIds.has(bq._id.toString())) {
-          pool.push(bq);
-          if (pool.length >= count) break;
-        }
-      }
+    // If a specific category was requested, strictly ensure only questions from that category are used
+    if (category && category !== 'All') {
+      pool = pool.filter(q => q.category && q.category.trim().toLowerCase() === category.trim().toLowerCase());
     }
 
     if (pool.length === 0) {
       return res.status(404).json({
         success: false,
-        message: 'No questions available for the selected difficulty and category.'
+        message: category !== 'All'
+          ? `No questions found for domain "${category}" at "${difficulty}" difficulty level.`
+          : `No questions available for the selected difficulty level.`
       });
     }
 

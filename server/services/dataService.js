@@ -86,14 +86,28 @@ export async function deleteUser(id) {
 export async function getQuestions(filter = {}) {
   if (isMongoLive()) {
     const query = { isActive: true };
-    if (filter.difficulty && filter.difficulty !== 'All') query.difficulty = filter.difficulty;
-    if (filter.category && filter.category !== 'All') query.category = filter.category;
+    if (filter.difficulty && filter.difficulty !== 'All') {
+      const diffPattern = filter.difficulty.trim().replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+      query.difficulty = { $regex: new RegExp(`^${diffPattern}$`, 'i') };
+    }
+    if (filter.category && filter.category !== 'All') {
+      const catPattern = filter.category.trim().replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+      query.category = { $regex: new RegExp(`^${catPattern}$`, 'i') };
+    }
     return await Question.find(query).sort({ createdAt: -1 });
   }
   return localDb.questions.filter(q => {
     if (!q.isActive) return false;
-    if (filter.difficulty && filter.difficulty !== 'All' && q.difficulty !== filter.difficulty) return false;
-    if (filter.category && filter.category !== 'All' && q.category !== filter.category) return false;
+    if (filter.difficulty && filter.difficulty !== 'All') {
+      if (!q.difficulty || q.difficulty.trim().toLowerCase() !== filter.difficulty.trim().toLowerCase()) {
+        return false;
+      }
+    }
+    if (filter.category && filter.category !== 'All') {
+      if (!q.category || q.category.trim().toLowerCase() !== filter.category.trim().toLowerCase()) {
+        return false;
+      }
+    }
     return true;
   });
 }

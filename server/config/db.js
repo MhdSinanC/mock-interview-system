@@ -9,12 +9,27 @@ let isMongoConnected = false;
 
 async function seedMongoIfEmpty() {
   try {
-    // 1. Ensure Questions exist
+    // 1. Ensure Questions exist and sync any new questions
     const questionCount = await Question.countDocuments();
     if (questionCount === 0) {
       console.log('[Database] Seeding default questions into MongoDB...');
       await Question.insertMany(defaultQuestions);
       console.log(`[Database] Seeded ${defaultQuestions.length} interview questions.`);
+    } else {
+      let inserted = 0;
+      for (const q of defaultQuestions) {
+        const exists = await Question.findOne({ questionText: q.questionText });
+        if (!exists) {
+          await Question.create({
+            ...q,
+            isActive: true
+          });
+          inserted++;
+        }
+      }
+      if (inserted > 0) {
+        console.log(`[Database] Synced ${inserted} new default questions into MongoDB.`);
+      }
     }
 
     // 2. Ensure Admin user exists

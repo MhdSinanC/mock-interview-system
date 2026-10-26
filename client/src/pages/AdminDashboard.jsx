@@ -255,8 +255,8 @@ export default function AdminDashboard() {
         <div className="space-y-4">
           
           {/* Filter Bar */}
-          <div className="flex flex-col sm:flex-row items-center justify-between gap-3 p-3.5 rounded-xl bg-white dark:bg-slate-900/80 border border-slate-200 dark:border-slate-800 shadow-sm transition-colors duration-200">
-            <div className="relative w-full sm:w-72">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-3 p-3.5 rounded-xl bg-white dark:bg-slate-900/80 border border-slate-200 dark:border-slate-800 shadow-sm transition-colors duration-200">
+            <div className="relative w-full md:w-64">
               <Search className="w-4 h-4 text-slate-400 dark:text-slate-500 absolute left-3.5 top-1/2 -translate-y-1/2" />
               <input
                 type="text"
@@ -267,19 +267,38 @@ export default function AdminDashboard() {
               />
             </div>
 
-            <div className="flex flex-wrap items-center gap-2 w-full sm:w-auto">
-              <span className="text-xs text-slate-500 dark:text-slate-400">Difficulty:</span>
-              {['All', 'Simple', 'Intermediate', 'Hard'].map((d) => (
-                <button
-                  key={d}
-                  onClick={() => setDiffFilter(d)}
-                  className={`px-2.5 py-1 rounded-lg text-xs font-medium transition-colors ${
-                    diffFilter === d ? 'bg-indigo-600 text-white font-bold' : 'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
-                  }`}
+            <div className="flex flex-wrap items-center gap-3 w-full md:w-auto">
+              <div className="flex items-center gap-1.5">
+                <span className="text-xs text-slate-500 dark:text-slate-400 font-medium">Track:</span>
+                <select
+                  value={catFilter}
+                  onChange={(e) => setCatFilter(e.target.value)}
+                  className="px-2.5 py-1 bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg text-xs font-medium text-slate-700 dark:text-slate-300 focus:outline-none focus:border-indigo-500"
                 >
-                  {d}
-                </button>
-              ))}
+                  <option value="All">All Categories</option>
+                  <option value="Frontend">Frontend</option>
+                  <option value="Backend">Backend</option>
+                  <option value="Full Stack">Full Stack</option>
+                  <option value="Data Structures">Data Structures</option>
+                  <option value="Database & SQL">Database & SQL</option>
+                  <option value="HR & Behavioral">HR & Behavioral</option>
+                </select>
+              </div>
+
+              <div className="flex items-center gap-1.5">
+                <span className="text-xs text-slate-500 dark:text-slate-400 font-medium">Difficulty:</span>
+                {['All', 'Simple', 'Intermediate', 'Hard'].map((d) => (
+                  <button
+                    key={d}
+                    onClick={() => setDiffFilter(d)}
+                    className={`px-2.5 py-1 rounded-lg text-xs font-medium transition-colors ${
+                      diffFilter === d ? 'bg-indigo-600 text-white font-bold' : 'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
+                    }`}
+                  >
+                    {d}
+                  </button>
+                ))}
+              </div>
             </div>
           </div>
 

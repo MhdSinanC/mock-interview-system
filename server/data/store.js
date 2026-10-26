@@ -124,7 +124,7 @@ export function initLocalStore() {
     persistLocalStore();
   }
 
-  // Ensure default questions exist
+  // Ensure default questions exist and sync any newly added questions
   if (!localDb.questions || localDb.questions.length === 0) {
     localDb.questions = defaultQuestions.map((q, idx) => ({
       _id: `q_${Date.now()}_${idx}`,
@@ -133,5 +133,32 @@ export function initLocalStore() {
       createdAt: new Date().toISOString()
     }));
     persistLocalStore();
+  } else {
+    const existingTexts = new Set(
+      localDb.questions.map(q => (q.questionText || '').trim().toLowerCase())
+    );
+    let addedCount = 0;
+    defaultQuestions.forEach((q, idx) => {
+      const qKey = (q.questionText || '').trim().toLowerCase();
+      if (!existingTexts.has(qKey)) {
+        localDb.questions.push({
+          _id: `q_${Date.now()}_${idx}_${Math.random().toString(36).substr(2, 5)}`,
+          ...q,
+          isActive: true,
+          createdAt: new Date().toISOString()
+        });
+        existingTexts.add(qKey);
+        addedCount++;
+      }
+    });
+
+    if (addedCount > 0) {
+      console.log(`[Storage] Synced ${addedCount} new default questions into local store.`);
+      persistLocalStore();
+    }
   }
 }
+
+// Eager initialization so localDb is populated upon module import
+initLocalStore();
+
